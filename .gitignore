@@ -34,7 +34,7 @@ dist/
 .sass-cache
 .stylelintrc
 bower_components
-__pycache__
+*/**/__pycache__
 /migrations
 *.pyc
 bin
