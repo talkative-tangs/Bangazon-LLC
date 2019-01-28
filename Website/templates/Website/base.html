@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Bangazon LLC Admin Suite</title>
+    </head>
+
+    <body>
+        
+        {% block nav %}
+        <div id="navigation">
+            <a href="{% url 'Website:index' %}">Home</a>
+            <a href="{% url 'Website:departments' %}">Departments</a>
+            <a href="{% url 'Website:employees' %}">Employees</a>
+            <a href="{% url 'Website:computers' %}">Computers</a>
+            <a href="{% url 'Website:training' %}">Training Programs</a>
+        </div>
+        {% endblock nav %}
+
+
+        {% block content %}{% endblock content %}
+        
+    </body>
+
+    
+</html>
