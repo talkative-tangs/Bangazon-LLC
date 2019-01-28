@@ -107,6 +107,7 @@ ctrl+c to quit
 
 
 This repo created by the Talkative Tangs of Cohort 28:
+
 [Bryan Nilsen](https://github.com/BryanNilsen) - Team Lead
 
 [Lesley Boyd](https://github.com/laboyd001)
