@@ -1,0 +1,22 @@
+{% extends 'Website/base.html' %}
+
+
+{% block content %}
+
+    <form action="{% url 'Website:new_computer' %}" method="POST">
+        {% csrf_token %}
+        <br>
+        <label for="manufacturer">Manufacturer:  </label>
+        <input type="text" name="manufacturer"/><br><br>
+
+        <label for="model">Model:  </label>
+        <input type="text" name="model"/><br><br>
+
+        <label for="purchase_date">Purchase Date: </label>
+        <input type="date" name="purchase_date"/><br><br>
+
+        <input type="submit" value="Add New Computer"/>
+    </form>
+
+{% endblock content %}
+
