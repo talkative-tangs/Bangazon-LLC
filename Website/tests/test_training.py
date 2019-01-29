@@ -7,6 +7,7 @@ from ..models import Training_Program
 # Create your tests here.
 
 class TrainingTest(TestCase):
+      ''' testing suite for Training Programs '''
       def test_list_training(self):
         new_training =  Training_Program.objects.create(
           program_name='Clerical Orientation',
