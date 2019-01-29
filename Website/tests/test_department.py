@@ -52,3 +52,17 @@ class DepartmentTest(TestCase):
         self.assertIn(new_department.department_name.encode(), response.content)
         self.assertIn(new_department2.department_name.encode(), response.content)
         self.assertIn(new_department3.department_name.encode(), response.content)
+
+        #specific test department name ?? 
+
+    # def test_post_department(self):
+    #     '''Your test suite must verify that when a POST operation is performed to the corresponding URL, 
+    #     then a successful response is received (i.e. status code must be 200)'''
+    
+    def test_get_department_form(self):
+        '''Your test suite must verify that the content of the response has the required input fields.'''
+        response = self.client.get(reverse('Website:departments_add'))
+
+        self.assertIn(
+            '<input type="text" name="department_name" required/>'.encode(), response.content
+        )
