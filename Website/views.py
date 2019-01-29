@@ -4,9 +4,7 @@ from django.template import loader
 from django.urls import reverse
 
 from .models import Employee
-from .models import Department
 from datetime import datetime
-
 from .models import Training_Program
 
 # Create your views here.
@@ -14,7 +12,7 @@ def index(request):
     return render(request, 'Website/index.html')
 
 def employees(request):
-    employees = Employee.objects.all()
+    employees = Employee.objects.order_by('last_name')
     context = {'employees': employees}
     return render(request, 'Website/employees.html', context)
 

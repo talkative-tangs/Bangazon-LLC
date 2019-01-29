@@ -5,7 +5,7 @@
 
     <ul>
         {% for employee in employees %}
-            <li>{{ employee.first_name }} {{ employee.last_name }}</a></li>
+            <li>{{ employee.first_name }} {{ employee.last_name }} - {{ employee.department.department_name }}</li>
         {% endfor %}
         </ul>
 
