@@ -50,3 +50,6 @@ def new_computer(request):
             )
         new_computer.save()
         return HttpResponseRedirect(reverse('Website:computers'))
+
+def training(request):
+    return render(request, 'Website/training.html')
