@@ -11,7 +11,7 @@
             <p>Number of attendees: {{ program.max_attendees }}</p>
         {% endfor %}
 
-    <p><a href="#">add training program</a></p>
+    <p><a href="{% url 'Website:add_training_form' %}">Add Training Program</a></p>
     {% else %}
         <p>No training programs in the database.</p>
     {% endif %}

@@ -1,0 +1,27 @@
+{% extends 'Website/base.html' %}
+
+{% block content %}
+    <h1>Training Programs</h1>
+    <h2>Add Training</h2>
+    <form action="{% url 'Website:post_training' %}" method="POST">
+      {% csrf_token %}
+        <label for="program_name">Program Name:</label>
+        <input id="program_name" type="text" name="program_name">
+        <br/>
+        <label for="program_desc">Program Description:</label>
+        <input id="program_desc" type="text" name="program_desc">
+        <br/>
+        <label for="start_date">Start Date:</label>
+        <input id="start_date" type="text" name="start_date">
+        <br/>
+        <label for="end_date">End Date:</label>
+        <input id="end_date" type="text" name="end_date">
+        <br/>
+        <label for="max_attendees">Maximum Attendees:</label>
+        <input id="max_attendees" type="number" name="max_attendees">
+        <br/>
+        <input type="submit" value="OK">
+    </form>
+
+
+{% endblock content %}

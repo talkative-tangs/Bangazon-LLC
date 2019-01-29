@@ -20,14 +20,25 @@ def departments(request):
 def computers(request):
     return render(request, 'Website/computers.html')
 
+
 def training(request):
-  ''' Get all of the training programs from DB,
-  sort by most recent date,
-  filter out programs occurring before today's date,
-  and send to training.html '''
+    ''' Gets all of the training programs from DB, sorts by most recent date,
+    and filters out training programs occurring before current date '''
+    training_list = Training_Program.objects.all().order_by('start_date').filter(start_date__gt=datetime.today())
+    context = {'training_list': training_list}
+    return render(request, 'Website/training.html', context)
 
-  training_list = Training_Program.objects.all().order_by('start_date').filter(start_date__gt=datetime.today())
+def add_training_form(request):
+    ''' Directs user to the add training program form '''
+    return render(request, 'Website/add_training.html')
 
-  context = {'training_list': training_list}
-
-  return render(request, 'Website/training.html', context)
+def post_training(request):
+    ''' Creates new Training Program record in database and redirects to Training page '''
+    program = request.POST["program_name"]
+    description = request.POST["program_desc"]
+    start = request.POST["start_date"]
+    end = request.POST["end_date"]
+    attendees = request.POST["max_attendees"]
+    new_program = Training_Program(program_name=program, program_desc=description, start_date=start, end_date=end, max_attendees=attendees)
+    new_program.save()
+    return HttpResponseRedirect(reverse('Website:training'))
