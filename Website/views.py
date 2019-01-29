@@ -80,17 +80,18 @@ def training(request):
     context = {'training_list': training_list}
     return render(request, 'Website/training.html', context)
 
-def add_training_form(request):
-    ''' Directs user to the add training program form '''
-    return render(request, 'Website/add_training.html')
-
-def post_training(request):
-    ''' Creates new Training Program record in database and redirects to Training page '''
-    program = request.POST["program_name"]
-    description = request.POST["program_desc"]
-    start = request.POST["start_date"]
-    end = request.POST["end_date"]
-    attendees = request.POST["max_attendees"]
-    new_program = Training_Program(program_name=program, program_desc=description, start_date=start, end_date=end, max_attendees=attendees)
-    new_program.save()
+def training_add(request):
+    ''' Directs user to the add training program form / or /
+    Creates new Training Program record in database and redirects to Training page
+    '''
+    if request.method != 'POST':
+      return render(request, 'Website/training_add.html')
+    else:
+      program = request.POST["program_name"]
+      description = request.POST["program_desc"]
+      start = request.POST["start_date"]
+      end = request.POST["end_date"]
+      attendees = request.POST["max_attendees"]
+      new_program = Training_Program(program_name=program, program_desc=description, start_date=start, end_date=end, max_attendees=attendees)
+      new_program.save()
     return HttpResponseRedirect(reverse('Website:training'))
