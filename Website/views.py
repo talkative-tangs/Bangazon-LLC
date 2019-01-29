@@ -22,6 +22,21 @@ def departments(request):
     context = { 'department_list': department_list }
     return render(request, 'Website/departments.html', context)
 
+def departments_add(request):
+    """view for adding new department"""
+    if request.method != 'POST':
+        return render(request, 'Website/departments_add.html')
+    else:
+        department_name = request.POST['department_name']
+        budget = request.POST['budget']
+
+        new_department = Department(
+            department_name=department_name,
+            budget=budget
+            )
+        new_department.save()
+        return HttpResponseRedirect(reverse('Website:departments'))
+
 def computers(request):
     """Show a list of all computers"""
     computers = Computer.objects.order_by('manufacturer')
