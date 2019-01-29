@@ -1,9 +1,24 @@
 {% extends 'Website/base.html' %}
 
 {% block content %}
-    <h1>Bangazon Departments</h1>
-
+<h1>Bangazon Departments</h1>
+    <ul>
+        {% for department in department_list %}
+                <li>
+                    Department Name: {{ department.department_name }}
+                    <br />
+                    Budget: ${{ department.budget}} per quarter
+                    <br />
+                    Number of Employees: {{ department.employee_set.all.count }}
+                    <ul>
+                            {% for employee in department.employee_set.all %}
+                                <li>
+                                    Employee: {{ employee.first_name }}
+                                </li>
+                            {% endfor %}
+                    </ul>
+                </li>
+                <br />
+        {% endfor %}
+    </ul>
 {% endblock content %}
-
-
-
