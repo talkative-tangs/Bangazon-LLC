@@ -6,5 +6,4 @@ import unittest
 from ..models import Department
 # Create your tests here.
 
-class DepartmentTest(TestCase):
-    
+# class DepartmentTest(TestCase):

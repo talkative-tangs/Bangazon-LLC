@@ -2,14 +2,10 @@
 
 {% block content %}
 <h1>Bangazon Departments</h1>
-    <ul>
         {% for department in department_list %}
-                <li>
-                    Department Name: {{ department.department_name }}
-                    <br />
-                    Budget: ${{ department.budget}} per quarter
-                    <br />
-                    Number of Employees: {{ department.employee_set.all.count }}
+                <h3>Department Name: {{ department.department_name }}</h3>
+                    <p>Budget: ${{ department.budget}} per quarter</p>
+                    <p>Number of Employees: {{ department.employee_set.all.count }}</p>
                     <ul>
                             {% for employee in department.employee_set.all %}
                                 <li>
@@ -17,8 +13,5 @@
                                 </li>
                             {% endfor %}
                     </ul>
-                </li>
-                <br />
         {% endfor %}
-    </ul>
 {% endblock content %}
