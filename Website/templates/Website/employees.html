@@ -1,6 +1,12 @@
 {% extends 'Website/base.html' %}
 
 {% block content %}
-    <h1>Bangazon Employees!</h1>
+    <h1>Bangazon Employees</h1>
+
+    <ul>
+        {% for employee in employees %}
+            <li>{{ employee.first_name }} {{ employee.last_name }}</a></li>
+        {% endfor %}
+        </ul>
 
 {% endblock content %}
