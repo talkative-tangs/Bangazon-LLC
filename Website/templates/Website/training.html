@@ -3,4 +3,18 @@
 {% block content %}
     <h1>Training Programs</h1>
 
+    {% if training_list %}
+        {% for program in training_list %}
+            <h3>{{ program.program_name }}</h3>
+            <p>{{ program.program_desc }}</p>
+            <p>Start Date: {{ program.start_date }}</p>
+            <p>Number of attendees: {{ program.max_attendees }}</p>
+        {% endfor %}
+
+    <p><a href="{% url 'Website:add_training_form' %}">Add Training Program</a></p>
+    {% else %}
+        <p>No training programs in the database.</p>
+    {% endif %}
+
+
 {% endblock content %}
