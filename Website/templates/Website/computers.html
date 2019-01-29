@@ -1,6 +1,18 @@
 {% extends 'Website/base.html' %}
 
 {% block content %}
-    <h1>Computers</h1>
+    <h1>Bangazon Computers</h1>
+
+    {% for computer in computers %}
+        <ul>
+            <a href="{% url 'Website:computer' computer.id %}">{{ computer }}</a>
+        </ul>
+    {% endfor %}
+
+    <button>
+        <a href="{% url 'Website:new_computer' %}">Add New Computer</a>
+    </button>
+
+    
 {% endblock content %}
 
