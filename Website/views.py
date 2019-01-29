@@ -17,7 +17,10 @@ def employees(request):
     return render(request, 'Website/employees.html', context)
 
 def departments(request):
-    return render(request, 'Website/departments.html')
+    '''Lists all departments sorted by name'''
+    department_list = Department.objects.all().order_by('department_name')
+    context = { 'department_list': department_list }
+    return render(request, 'Website/departments.html', context)
 
 def computers(request):
     """Show a list of all computers"""
