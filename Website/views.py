@@ -3,11 +3,9 @@ from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from django.urls import reverse
 
-
 from datetime import datetime
 
-from .models import Training_Program
-from .models import Computer
+from .models import Training_Program, Department, Employee, Computer
 
 # Create your views here.
 def index(request):

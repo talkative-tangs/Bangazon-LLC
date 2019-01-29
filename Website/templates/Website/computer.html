@@ -9,11 +9,11 @@
             <li>Model: {{ computer.model }}</li>
             <li>Purchase Date: {{ computer.purchase_date }}</li>
             <li>Decomssion Date: {{ computer.decommision_date }}</li>
-            <li>Available?: {{ computer.is_available }}</li>
+            <li>Is Computer Available?: {{ computer.is_available|yesno:"yes,no,maybe" }}</li>
         </ul>
     </div>
 
-
-
-
+    <button>
+        <a href="{% url 'Website:computers' %}">Return to List of Computers</a>
+    </button>
 {% endblock content %}
