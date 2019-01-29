@@ -3,8 +3,8 @@ from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from django.urls import reverse
 
+from .models import Employee
 from datetime import datetime
-
 from .models import Training_Program, Department, Employee, Computer
 
 # Create your views here.
@@ -12,7 +12,9 @@ def index(request):
     return render(request, 'Website/index.html')
 
 def employees(request):
-    return render(request, 'Website/employees.html')
+    employees = Employee.objects.order_by('last_name')
+    context = {'employees': employees}
+    return render(request, 'Website/employees.html', context)
 
 def departments(request):
     '''Lists all departments sorted by name'''
@@ -40,7 +42,7 @@ def computer(request, computer_id):
 
 def new_computer(request):
     """view for adding new computers"""
-    if request.method != 'POST':   
+    if request.method != 'POST':
         return render(request, 'Website/new_computer.html')
     else:
         manufacturer = request.POST['manufacturer']
@@ -48,8 +50,8 @@ def new_computer(request):
         purchase_date = request.POST['purchase_date']
 
         new_computer = Computer(
-            manufacturer=manufacturer, 
-            model=model, 
+            manufacturer=manufacturer,
+            model=model,
             purchase_date=purchase_date,
             )
         new_computer.save()
