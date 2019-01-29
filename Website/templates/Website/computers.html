@@ -5,12 +5,12 @@
 
     {% for computer in computers %}
         <ul>
-            <a href="{% url 'Website:computer' computer.id %}">{{ computer }}</a>
+            <a href="{% url 'Website:computers_detail' computer.id %}">{{ computer }}</a>
         </ul>
     {% endfor %}
 
     <button>
-        <a href="{% url 'Website:new_computer' %}">Add New Computer</a>
+        <a href="{% url 'Website:computers_add' %}">Add New Computer</a>
     </button>
 
     

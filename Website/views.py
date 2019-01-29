@@ -22,6 +22,21 @@ def departments(request):
     context = { 'department_list': department_list }
     return render(request, 'Website/departments.html', context)
 
+def departments_add(request):
+    """view for adding new department"""
+    if request.method != 'POST':
+        return render(request, 'Website/departments_add.html')
+    else:
+        department_name = request.POST['department_name']
+        budget = request.POST['budget']
+
+        new_department = Department(
+            department_name=department_name,
+            budget=budget
+            )
+        new_department.save()
+        return HttpResponseRedirect(reverse('Website:departments'))
+
 def computers(request):
     """Show a list of all computers"""
     computers = Computer.objects.order_by('manufacturer')
@@ -31,19 +46,19 @@ def computers(request):
 
     return render(request, 'Website/computers.html', context)
 
-def computer(request, computer_id):
+def computers_detail(request, computer_id):
     """Show a single computer and its details"""
     computer = Computer.objects.get(id=computer_id)
     context = {
         'computer': computer,
         }
 
-    return render(request, 'Website/computer.html', context)
+    return render(request, 'Website/computers_detail.html', context)
 
-def new_computer(request):
+def computers_add(request):
     """view for adding new computers"""
     if request.method != 'POST':
-        return render(request, 'Website/new_computer.html')
+        return render(request, 'Website/computers_add.html')
     else:
         manufacturer = request.POST['manufacturer']
         model = request.POST['model']
