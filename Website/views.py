@@ -3,18 +3,25 @@ from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from django.urls import reverse
 
+from .models import Training_Program
+
 # Create your views here.
-def index(request):      
+def index(request):
     return render(request, 'Website/index.html')
 
 def employees(request):
-    return render(request, 'Website/employees.html')    
+    return render(request, 'Website/employees.html')
 
 def departments(request):
-    return render(request, 'Website/departments.html')        
+    return render(request, 'Website/departments.html')
 
 def computers(request):
     return render(request, 'Website/computers.html')
 
 def training(request):
-    return render(request, 'Website/training.html')
+  ''' Get all of the training programs from DB and send to training.html '''
+
+    training_list = Training_Program.objects.all()
+    context = {'training_list': training_list}
+
+    return render(request, 'Website/training.html', context)
