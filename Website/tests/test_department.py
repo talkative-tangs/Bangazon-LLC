@@ -52,5 +52,3 @@ class DepartmentTest(TestCase):
         self.assertIn(new_department.department_name.encode(), response.content)
         self.assertIn(new_department2.department_name.encode(), response.content)
         self.assertIn(new_department3.department_name.encode(), response.content)
-
-
