@@ -61,7 +61,7 @@ def new_computer(request):
 def training(request):
     ''' Gets all of the training programs from DB, sorts by most recent date,
     and filters out training programs occurring before current date '''
-    training_list = Training_Program.objects.all().order_by('start_date').filter(start_date__gt=datetime.today())
+    training_list = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
     context = {'training_list': training_list}
     return render(request, 'Website/training.html', context)
 
