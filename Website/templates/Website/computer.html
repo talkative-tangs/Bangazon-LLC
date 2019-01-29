@@ -1,0 +1,19 @@
+{% extends 'Website/base.html' %}
+
+{% block content %}
+
+    <h2>Bangazon Computer: {{ computer }}</h2>
+    <div>
+        <ul>
+            <li>Manufacturer: {{ computer.manufacturer }}</li>
+            <li>Model: {{ computer.model }}</li>
+            <li>Purchase Date: {{ computer.purchase_date }}</li>
+            <li>Decomssion Date: {{ computer.decommision_date }}</li>
+            <li>Available?: {{ computer.is_available }}</li>
+        </ul>
+    </div>
+
+
+
+
+{% endblock content %}
