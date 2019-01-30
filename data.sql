@@ -2,8 +2,8 @@
 -- DELETE FROM Website_department;
 -- DELETE FROM Website_training_program;
 -- DELETE FROM Website_computer;
--- DELETE FROM Website_join_;
--- DELETE FROM Website_join;
+-- DELETE FROM Website_join_computer_employee;
+-- DELETE FROM Website_join_training_employee;
 
 -- DROP TABLE IF EXISTS Website_employee;
 -- DROP TABLE IF EXISTS Website_department;
