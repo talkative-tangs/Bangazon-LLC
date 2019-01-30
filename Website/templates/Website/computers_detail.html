@@ -11,6 +11,8 @@
             <li>Decomssion Date: {{ computer.decommision_date }}</li>
             <li>Is Computer Available?: {{ computer.is_available|yesno:"yes,no,maybe" }}</li>
         </ul>
+
+        <p>computer assignments {{ computer_assignments }}</p>
     </div>
 
     <button onclick="return confirm('Are you sure you want to delete this computer?');">

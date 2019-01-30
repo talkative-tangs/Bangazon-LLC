@@ -5,7 +5,7 @@ from django.urls import reverse
 
 from .models import Employee
 from datetime import datetime
-from .models import Training_Program, Department, Employee, Computer
+from .models import Training_Program, Department, Employee, Computer, Join_Computer_Employee
 
 # Create your views here.
 def index(request):
@@ -95,12 +95,18 @@ def computers_add(request):
 def computers_delete(request, computer_id):
     '''delete computer from computer list'''
     selected_computer = Computer.objects.get(id=computer_id)
+    computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer)
+    
 
-    selected_computer.delete()
-    return HttpResponseRedirect(reverse('Website:computers'))
+    # if computer_assignments.assign_date == null:
+    #     selected_computer.delete()
+    #     return HttpResponseRedirect(reverse('Website:computers'))
+    # else:
+    #     return HttpResponse('You cannot delete a computer that has been assigned.')
 
     context = {
-        'selected_computer': selected_computer
+        'selected_computer': selected_computer,
+        'computer_assignments': computer_assignments
         }
     return render(request, 'Website/computers_detail.html', context)
 
