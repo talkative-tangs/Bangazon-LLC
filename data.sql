@@ -18,6 +18,7 @@ INSERT into Website_employee VALUES (null, "Lesley", "Boyd", "2018-11-09", null,
 INSERT into Website_employee VALUES (null, "Bryan", "Nilsen", "2018-06-02", null, 1, 5);
 INSERT into Website_employee VALUES (null, "Elyse", "Dawson", "2018-10-01", null, 0, 5);
 INSERT into Website_employee VALUES (null, "Rick", "Sanchez", "2019-01-28", "2019-01-28", 0, 1);
+INSERT into Website_employee VALUES (null, "Morty", "Smith", "2019-01-28", null, 0, 1);
 -- End Employee --
 
 -- Department --
