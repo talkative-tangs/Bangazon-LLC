@@ -58,7 +58,7 @@ def departments_add(request):
         return HttpResponseRedirect(reverse('Website:departments'))
 
 def computers(request):
-    """Show a list of all computers"""
+    '''Show a list of all computers'''
     computers = Computer.objects.order_by('manufacturer')
     context = {
         'computers': computers,
@@ -67,7 +67,7 @@ def computers(request):
     return render(request, 'Website/computers.html', context)
 
 def computers_detail(request, computer_id):
-    """Show a single computer and its details"""
+    '''Show a single computer and its details'''
     computer = Computer.objects.get(id=computer_id)
     context = {
         'computer': computer,
@@ -76,7 +76,7 @@ def computers_detail(request, computer_id):
     return render(request, 'Website/computers_detail.html', context)
 
 def computers_add(request):
-    """view for adding new computers"""
+    '''view for adding new computer'''
     if request.method != 'POST':
         return render(request, 'Website/computers_add.html')
     else:
@@ -91,6 +91,18 @@ def computers_add(request):
             )
         new_computer.save()
         return HttpResponseRedirect(reverse('Website:computers'))
+
+def computers_delete(request, computer_id):
+    '''delete computer from computer list'''
+    selected_computer = Computer.objects.get(id=computer_id)
+
+    selected_computer.delete()
+    return HttpResponseRedirect(reverse('Website:computers'))
+
+    context = {
+        'selected_computer': selected_computer
+        }
+    return render(request, 'Website/computers_detail.html', context)
 
 
 def training(request):

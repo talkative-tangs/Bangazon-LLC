@@ -32,13 +32,16 @@ class Employee(models.Model):
         return return_value
 
 #Computer Model
-class Computer(models.Model):
-    """A device that is assigned to a company employee"""    
+class Computer(SafeDeleteModel):
+    """A device that is assigned to a company employee"""  
+    _safedelete_policy = SOFT_DELETE_CASCADE
+
     purchase_date = models.DateField('Purchase Date')
     decommission_date = models.DateField('Decommission Date', default=None, blank=True, null=True)
     manufacturer = models.CharField(max_length=30)
     model = models.CharField(max_length=30)
     is_available = models.BooleanField(default=True)
+    computer_owners = models.ManyToManyField(Employee, through='Join_Computer_Employee')
 
     def __str__(self):
         computer_name = (f"{self.manufacturer} {self.model} - ID#{self.id}")        
