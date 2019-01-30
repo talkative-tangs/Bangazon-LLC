@@ -45,13 +45,13 @@ INSERT into Website_training_program VALUES (null, "Code of Conduct", "Two-day t
 
 -- Computer --
 INSERT INTO Website_computer VALUES (null, "2018-02-01", null, "Lenovo", "Yoga 710", 0);
-INSERT INTO Website_computer VALUES (null, "2019-01-01", null, "Apple", "15in MacBook Pro", 0);
+INSERT INTO Website_computer VALUES (null, "2018-01-01", null, "Apple", "15in MacBook Pro", 0);
 INSERT INTO Website_computer VALUES (null, "2017-11-20", null, "Apple", "13in MacBook Air", 0);
 INSERT INTO Website_computer VALUES (null, "2018-05-07", null, "Lenovo", "Thinkbook X1", 1);
-INSERT INTO Website_computer VALUES (null, "2019-01-02", null, "Apple", "15in MacBook Pro", 0);
+INSERT INTO Website_computer VALUES (null, "2019-01-02", null, "Apple", "15in MacBook Pro", 1);
 INSERT INTO Website_computer VALUES (null, "2019-01-03", null, "Apple", "15in MacBook Pro", 0);
-INSERT INTO Website_computer VALUES (null, "2018-01-03", null, "Asus", "Aspire", 0);
-
+INSERT INTO Website_computer VALUES (null, "2018-01-02", "2019-02-01", "Asus", "Aspire", 0);
+INSERT INTO Website_computer VALUES (null, "2017-12-12", null, "Dell", "Inspiron", 1);
 -- End Computer --
 
 -- Join_Training_Employee --
@@ -64,11 +64,13 @@ INSERT INTO Website_join_training_employee VALUES (null, 4, 6);
 -- Join_Computer_Employee --
 INSERT INTO Website_join_computer_employee VALUES(null, "2019-01-28", null, 1, 1);
 INSERT INTO Website_join_computer_employee VALUES(null, "2018-12-25", null, 2, 2);
-INSERT INTO Website_join_computer_employee VALUES(null, "2018-01-01", null, 3, 3);
-INSERT INTO Website_join_computer_employee VALUES(null, "2018-05-04", null, 6, 4);
-INSERT INTO Website_join_computer_employee VALUES(null, "2018-05-04", null, 5, 5);
-INSERT INTO Website_join_computer_employee VALUES(null, "2018-11-09", "2019-01-27", 7, 1);
-
+INSERT INTO Website_join_computer_employee VALUES(null, "2018-11-09", null, 3, 3);
+INSERT INTO Website_join_computer_employee VALUES(null, "2018-05-07", null, 6, 4);
+INSERT INTO Website_join_computer_employee VALUES(null, "2019-01-28", "2019-01-28", 5, 5);
+INSERT INTO Website_join_computer_employee VALUES(null, "2018-05-09", "2019-01-27", 7, 1);
+INSERT INTO Website_join_computer_employee VALUES(null, "2018-11-09", "2018-12-24", 8, 2);
+INSERT INTO Website_join_computer_employee VALUES(null, "2018-06-02", "2018-11-08", 8, 3);
+INSERT INTO Website_join_computer_employee VALUES(null, "2018-11-09", "2019-01-15", 3, 3);
 -- End Join_Employee_Computer --
 
 
