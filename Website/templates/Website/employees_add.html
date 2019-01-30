@@ -22,11 +22,12 @@
           <option value="{{department.id}}" id="{{department.id}}">{{department.department_name}}</option>
           {% endfor %}
         </select>
-
+        <br/>
         <label for="is_supervisor">Is Supervisor:</label>
         <select name="is_supervisor">
             <option value=False id="is_supervisor">No</option>
             <option value=True id="is_supervisor">Yes</option>
+        </select>
         <br/>
         <input type="submit" value="OK">
     </form>
