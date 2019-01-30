@@ -15,7 +15,7 @@
 -- Employee --
 INSERT into Website_employee VALUES (null, "Ousama", "Elayan", "2018-05-09", null, 0, 2);
 INSERT into Website_employee VALUES (null, "Lesley", "Boyd", "2018-11-09", null, 0, 3);
-INSERT into Website_employee VALUES (null, "Bryan", "Nilsen", "2018-6-02", null, 1, 5);
+INSERT into Website_employee VALUES (null, "Bryan", "Nilsen", "2018-06-02", null, 1, 5);
 INSERT into Website_employee VALUES (null, "Elyse", "Dawson", "2018-10-01", null, 0, 5);
 INSERT into Website_employee VALUES (null, "Rick", "Sanchez", "2019-01-28", "2019-01-28", 0, 1);
 -- End Employee --
@@ -50,6 +50,8 @@ INSERT INTO Website_computer VALUES (null, "2017-11-20", null, "Apple", "13in Ma
 INSERT INTO Website_computer VALUES (null, "2018-05-07", null, "Lenovo", "Thinkbook X1", 1);
 INSERT INTO Website_computer VALUES (null, "2019-01-02", null, "Apple", "15in MacBook Pro", 0);
 INSERT INTO Website_computer VALUES (null, "2019-01-03", null, "Apple", "15in MacBook Pro", 0);
+INSERT INTO Website_computer VALUES (null, "2018-01-03", null, "Asus", "Aspire", 0);
+
 -- End Computer --
 
 -- Join_Training_Employee --
@@ -65,6 +67,8 @@ INSERT INTO Website_join_computer_employee VALUES(null, "2018-12-25", null, 2, 2
 INSERT INTO Website_join_computer_employee VALUES(null, "2018-01-01", null, 3, 3);
 INSERT INTO Website_join_computer_employee VALUES(null, "2018-05-04", null, 6, 4);
 INSERT INTO Website_join_computer_employee VALUES(null, "2018-05-04", null, 5, 5);
+INSERT INTO Website_join_computer_employee VALUES(null, "2018-11-09", "2019-01-27", 7, 1);
+
 -- End Join_Employee_Computer --
 
 
