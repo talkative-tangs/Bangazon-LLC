@@ -3,18 +3,28 @@ from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from django.urls import reverse
 
-from .models import Employee
 from datetime import datetime
-from .models import Training_Program, Department, Employee, Computer
+from .models import Training_Program, Department, Employee, Computer, Join_Computer_Employee, Join_Training_Employee
 
 # Create your views here.
 def index(request):
     return render(request, 'Website/index.html')
 
 def employees(request):
+    '''Lists all Bangazon employees in ascending alphabetical order'''
     employees = Employee.objects.order_by('last_name')
     context = {'employees': employees}
     return render(request, 'Website/employees.html', context)
+
+def employees_detail(request, employee_id):
+    '''Shows details of clicked employee'''
+    employee = Employee.objects.get(id=employee_id)
+    #Need to build out database examples for multiple training programs in oder to build logic to sort programs by previous and upcoming.
+    programs = Join_Training_Employee.objects.filter(employee_id=employee_id)
+    #Logic for computer currently finds singular relationship. Need to build database examples for multiple computers in order to build logic to find CURRENT
+    computer = Join_Computer_Employee.objects.get(employee_id=employee_id)
+    context = { 'employee': employee, 'programs': programs, 'computer': computer}
+    return render(request, 'Website/employees_detail.html', context)
 
 def departments(request):
     '''Lists all departments sorted by name'''

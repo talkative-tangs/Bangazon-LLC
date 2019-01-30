@@ -1,0 +1,37 @@
+{% extends 'Website/base.html' %}
+
+{% block content %}
+
+<h1>Bangazon Employee: {{ employee.first_name }} {{employee.last_name }}</h1>
+<ul>
+  <li>Department: {{ employee.department.department_name }}</li>
+  <li>Current Computer: #{{ computer.computer_id }}</li>
+  {% if programs %}
+  <li>All Training Programs:
+    <ul>
+    {% for program in programs %}
+  <li>{{ program.training_program.program_name }}</li>
+  {% endfor %}
+  </ul>
+  </li>
+  {% else %}
+  <li>This employee has no training programs.</li>
+  {% endif %}
+  </li>
+  <!-- <li>Previous Training Programs:
+    <ul>
+      <li>Orientation</li>
+    </ul>
+  </li>
+  <li>Upcoming Training Programs:
+    <ul>
+      <li>How to be Awesome Seminar</li>
+    </ul>
+  </li> -->
+</ul>
+
+<button>
+  <a href="{% url 'Website:employees' %}">Return to List of Employees</a>
+</button>
+
+{% endblock content %}

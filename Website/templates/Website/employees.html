@@ -5,7 +5,7 @@
 
     <ul>
         {% for employee in employees %}
-            <li>{{ employee.first_name }} {{ employee.last_name }} - {{ employee.department.department_name }}</li>
+            <li><a href="{% url 'Website:employees_detail' employee.id %}">{{ employee.first_name }} {{ employee.last_name }} - {{ employee.department.department_name }}</a></li>
         {% endfor %}
         </ul>
 

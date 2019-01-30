@@ -5,6 +5,7 @@ app_name = 'Website'
 urlpatterns = [
   path('', views.index, name='index'),
   path('employees/', views.employees, name='employees'),
+  path('employees/detail/<int:employee_id>/', views.employees_detail, name='employees_detail'),
   path('departments/', views.departments, name='departments'),
   path('departments/add', views.departments_add, name='departments_add'),
   path('computers/', views.computers, name='computers'),
