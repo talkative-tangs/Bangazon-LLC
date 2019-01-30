@@ -66,3 +66,12 @@ class DepartmentTest(TestCase):
         self.assertIn(
             '<input type="text" name="department_name" required/>'.encode(), response.content
         )
+    
+    def test_get_department_detail(self):
+        new_department = Department.objects.create(
+            department_name = "Corgi Fur Extractors",
+            budget = 900
+        )
+
+        response = self.client.get(reverse('Website:departments_detail', args=(1,)))
+        self.assertEqual(response.context["department"].department_name, new_department.department_name)

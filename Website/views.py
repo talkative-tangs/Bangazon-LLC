@@ -42,6 +42,11 @@ def departments(request):
     context = { 'department_list': department_list }
     return render(request, 'Website/departments.html', context)
 
+def departments_detail(request, department_id):
+    """Show a single department and its details"""
+    department = get_object_or_404(Department, pk=department_id)
+    return render(request, 'Website/departments_detail.html', {'department': department})
+
 def departments_add(request):
     """view for adding new department"""
     if request.method != 'POST':

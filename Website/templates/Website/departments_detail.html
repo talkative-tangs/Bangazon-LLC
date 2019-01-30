@@ -1,0 +1,17 @@
+{% extends 'Website/base.html' %}
+
+{% block content %}
+<h2>Bangazon Department: {{ department }}</h2>
+    <h5>Budget: ${{ department.budget }}.00 per quarter</h5>
+    <h5>Employees: </h5>
+        <ul>
+            {% for employee in department.employee_set.all %}
+                    <li>
+                        {{ employee.first_name }} {{ employee.last_name }}
+                    </li>
+            {% endfor %}
+        </ul>
+<button>
+    <a href="{% url 'Website:departments' %}">Return to List of Departments</a>
+</button>
+{% endblock content %}
