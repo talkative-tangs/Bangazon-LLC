@@ -16,7 +16,6 @@ def employees(request):
     context = {'employees': employees}
     return render(request, 'Website/employees.html', context)
 
-<<<<<<< HEAD
 def employees_detail(request, employee_id):
     '''Shows details of clicked employee'''
     employee = Employee.objects.get(id=employee_id)
@@ -26,7 +25,7 @@ def employees_detail(request, employee_id):
     computer = Join_Computer_Employee.objects.get(employee_id=employee_id)
     context = { 'employee': employee, 'programs': programs, 'computer': computer}
     return render(request, 'Website/employees_detail.html', context)
-=======
+
 def employees_add(request):
     ''' Directs user to the add employee form / or /
     Creates new employee record in database and redirects to employees page
@@ -46,7 +45,6 @@ def employees_add(request):
       new_employee = Employee(first_name=first, last_name=last, start_date=start, department=department, is_supervisor=is_supervisor)
       new_employee.save()
     return HttpResponseRedirect(reverse('Website:employees'))
->>>>>>> master
 
 def departments(request):
     '''Lists all departments sorted by name'''
