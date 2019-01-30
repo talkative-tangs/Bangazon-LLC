@@ -36,6 +36,14 @@ def employees_add(request):
       new_employee.save()
     return HttpResponseRedirect(reverse('Website:employees'))
 
+def employees_edit(request, employee_id):
+    ''' Allows user to edit employee information:
+    last name, or change department / computer / training programs assigned
+    '''
+    employee = Employee.objects.get(id=employee_id)
+    context = { 'employee' : employee }
+    return render(request, 'Website/employees_edit.html', context)
+
 def departments(request):
     '''Lists all departments sorted by name'''
     department_list = Department.objects.all().order_by('department_name')
