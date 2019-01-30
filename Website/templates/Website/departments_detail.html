@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Bangazon Department: {{ department }}</h2>
     <h5>Budget: ${{ department.budget }}.00 per quarter</h5>
-        <p>Currently Employed: </p>
+        <p>Current Department Members: </p>
                 <ul>
                     {% for employee in department.employee_set.all %}
                         {% if employee.end_date == null %}
@@ -11,7 +11,7 @@
                         {% endif %}
                     {% endfor %}
                 </ul>
-                <p>Previously Employed: </p>
+                <p>Previous Department Members: </p>
                 <ul>
                     {% for employee in department.employee_set.all %}
                         {% if employee.end_date != null %}
