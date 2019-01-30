@@ -1,0 +1,35 @@
+{% extends 'Website/base.html' %}
+
+{% block content %}
+    <h1>Bangazon Employees</h1>
+    <h2>Add Employee</h2>
+
+    <form action="{% url 'Website:employees_add' %}" method="POST">
+      {% csrf_token %}
+        <label for="first_name">First Name:</label>
+        <input id="first_name" type="text" name="first_name" required>
+        <br/>
+        <label for="last_name">Last Name:</label>
+        <input id="last_name" type="text" name="last_name" required>
+        <br/>
+        <label for="start_date">Start Date:</label>
+        <input id="start_date" type="date" name="start_date" required>
+        <br/>
+        <!-- employee end date omitted from this form and should be accessed when editing employee  -->
+        <label for="department">Department:</label>
+        <select name="department">
+          {% for department in department_list %}
+          <option value="{{department.id}}" id="{{department.id}}">{{department.department_name}}</option>
+          {% endfor %}
+        </select>
+        <br/>
+        <label for="is_supervisor">Is Supervisor:</label>
+        <select name="is_supervisor">
+            <option value=False id="is_supervisor">No</option>
+            <option value=True id="is_supervisor">Yes</option>
+        </select>
+        <br/>
+        <input type="submit" value="OK">
+    </form>
+
+{% endblock content %}
