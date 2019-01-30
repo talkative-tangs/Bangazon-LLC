@@ -36,6 +36,7 @@ class Computer(models.Model):
     manufacturer = models.CharField(max_length=30)
     model = models.CharField(max_length=30)
     is_available = models.BooleanField(default=True)
+    employee = models.ManyToManyField(Employee, through='Join_Computer_Employee')
 
     def __str__(self):
         computer_name = (f"{self.manufacturer} {self.model} - ID#{self.id}")
@@ -44,8 +45,8 @@ class Computer(models.Model):
 # Join table for Computer & Employee
 class Join_Computer_Employee(models.Model):
     """a relationship between computers and employees"""
-    employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
-    computer = models.ForeignKey(Computer, on_delete=models.PROTECT)
+    employee = models.ForeignKey('Employee', on_delete=models.PROTECT)
+    computer = models.ForeignKey('Computer', on_delete=models.PROTECT)
     assign_date = models.DateField('Assign Date')
     unassign_date = models.DateField('Unassign Date', default=None, blank=True, null=True)
 
@@ -57,6 +58,7 @@ class Training_Program(models.Model):
     start_date = models.DateField('Starting Date')
     end_date = models.DateField('Ending Date')
     max_attendees =  models.IntegerField()
+    employee = models.ManyToManyField(Employee, through='Join_Training_Employee')
 
     def __str__(self):
         """returns a training program name"""
@@ -65,5 +67,5 @@ class Training_Program(models.Model):
 # Join table for Training Program & Employee
 class Join_Training_Employee(models.Model):
     """The join table for employees and training"""
-    employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
-    training_program = models.ForeignKey(Training_Program, on_delete=models.PROTECT)
+    employee = models.ForeignKey('Employee', on_delete=models.PROTECT)
+    training_program = models.ForeignKey('Training_Program', on_delete=models.PROTECT)
