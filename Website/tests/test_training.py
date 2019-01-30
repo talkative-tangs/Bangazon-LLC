@@ -35,10 +35,10 @@ class TrainingTest(TestCase):
         # self.assertIn(new_training.max_attendees.encode(), response.content)
         # python encodes date string? and integer
         # print(response.content)
-        # print(response.content)
+        print(response.content)
 
       def test_training_add(self):
         response = self.client.get(reverse('Website:training_add'))
-        # print(response)
+        print(response)
 
       #   self.assertIn(response.content, 'html output goes here')
