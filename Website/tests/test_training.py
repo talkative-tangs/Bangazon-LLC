@@ -1,10 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
-
 import unittest
 
 from ..models import Training_Program
-# Create your tests here.
 
 class TrainingTest(TestCase):
       ''' testing suite for Training Programs '''
@@ -17,8 +15,7 @@ class TrainingTest(TestCase):
           max_attendees=12,
         )
 
-        # issue a GET request. client is a dummy web browser
-        # reverse is used to generate a URL for a given view. The main advantage is that you do not hard code routes in your code.
+        # issue a GET request.
         response = self.client.get(reverse('Website:training'))
 
         # check that the response is 200 ok
@@ -27,14 +24,18 @@ class TrainingTest(TestCase):
         # check that rendered context contains one item
         self.assertEqual(len(response.context['training_list']), 1)
 
+        #  checks that the response context equals what was sent
+        # self.assertEqual(response.context['training_list'], new_training)
+
         # .encode converts from unicode to utf-8
         self.assertIn(new_training.program_name.encode(), response.content)
         self.assertIn(new_training.program_desc.encode(), response.content)
-        # self.assertIn(new_training.start_date.encode(), response.content)
+        # self.assertIn('July 11, 2019', response.content)
         # self.assertIn(new_training.end_date.encode(), response.content)
         # self.assertIn(new_training.max_attendees.encode(), response.content)
         # python encodes date string? and integer
         # print(response.content)
+        print(response.content)
 
       def test_training_add(self):
         response = self.client.get(reverse('Website:training_add'))
