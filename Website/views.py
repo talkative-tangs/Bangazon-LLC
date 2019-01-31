@@ -46,6 +46,25 @@ def employees_add(request):
       new_employee.save()
     return HttpResponseRedirect(reverse('Website:employees'))
 
+def employees_edit(request, employee_id):
+    ''' Allows user to edit employee information:
+    last name, or change department / computer / training programs assigned
+    '''
+    if request.method != 'POST':
+      department_list = Department.objects.all()
+      employee = Employee.objects.get(id=employee_id)
+      context = { 'employee' : employee, 'department_list' : department_list }
+      return render(request, 'Website/employees_edit.html', context)
+    else:
+      employee = Employee.objects.get(id=employee_id)
+      employee.first_name = request.POST["first_name"]
+      employee.last_name = request.POST["last_name"]
+      employee.department_id = request.POST["department"]
+      employee.is_supervisor = request.POST["is_supervisor"]
+
+      employee.save()
+    return HttpResponseRedirect(reverse('Website:employees_detail', args=(employee_id, )))
+
 def departments(request):
     '''Lists all departments sorted by name'''
     department_list = Department.objects.all().order_by('department_name')

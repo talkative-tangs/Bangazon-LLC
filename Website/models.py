@@ -1,6 +1,7 @@
 # Live coded (LiveShare) as team: Ousama, Bryan, Lesley, Elyse
 
 from django.db import models
+from datetime import datetime
 
 from safedelete.models import SafeDeleteModel
 from safedelete.models import SOFT_DELETE_CASCADE
@@ -73,6 +74,13 @@ class Training_Program(SafeDeleteModel):
     end_date = models.DateField('Ending Date')
     max_attendees =  models.IntegerField()
     employee = models.ManyToManyField(Employee, through='Join_Training_Employee')
+
+    @property
+    def has_ended(self):
+        if datetime.today() > self.end_date:
+          return True
+        else:
+          return False
 
     def __str__(self):
         """returns a training program name"""

@@ -1,0 +1,42 @@
+{% extends 'Website/base.html' %}
+
+{% block content %}
+    <h1>Bangazon Employees</h1>
+    <h2>Edit Employee: {{ employee.first_name }} {{ employee.last_name }} </h2>
+
+    <form action="{% url 'Website:employees_edit' employee.id %}" method="POST">
+        {% csrf_token %}
+
+        <label for="first_name">First Name:</label>
+        <input id="first_name" type="text" name="first_name" value={{employee.first_name}} required>
+        <br/>
+        <label for="last_name">Last Name:</label>
+        <input id="last_name" type="text" name="last_name" value={{employee.last_name}} required>
+        <br/>
+        <!-- employee end date omitted from this form and should be accessed when editing employee  -->
+        <label for="department">Department:</label>
+        <select name="department">
+          {% for department in department_list %}
+            {% if department.id == employee.department_id %}
+              <option value="{{department.id}}" id="{{department.id}}" selected="selected">{{department.department_name}}</option>
+            {% else %}
+              <option value="{{department.id}}" id="{{department.id}}">{{department.department_name}}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        <br/>
+        <label for="is_supervisor">Is Supervisor:</label>
+        <select name="is_supervisor">
+          {% if employee.is_supervisor == 0 %}
+            <option value=False id="is_supervisor" selected="selected">No</option>
+            <option value=True id="is_supervisor">Yes</option>
+          {% else %}
+            <option value=False id="is_supervisor">No</option>
+            <option value=True id="is_supervisor" selected="selected">Yes</option>
+          {% endif %}
+        </select>
+        <br/>
+        <input type="submit" value="OK">
+    </form>
+
+{% endblock content %}

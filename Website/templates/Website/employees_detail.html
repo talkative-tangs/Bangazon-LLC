@@ -46,6 +46,10 @@
 </ul>
 
 <button>
+  <a href="{% url 'Website:employees_edit' employee.id %}">Edit Employee</a>
+</button>
+
+<button>
   <a href="{% url 'Website:employees' %}">Return to List of Employees</a>
 </button>
 
