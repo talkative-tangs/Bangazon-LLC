@@ -96,7 +96,6 @@ def computers_delete(request, computer_id):
     '''delete computer from computer list'''
     selected_computer = Computer.objects.get(id=computer_id)
     computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer_id)
-    print_me = Computer.model
 
     if len(computer_assignments) == 0:
         selected_computer.delete()
@@ -104,14 +103,11 @@ def computers_delete(request, computer_id):
     else:
         return render(request,'Website/computers_delete.html')
 
-
     context = {
         'selected_computer': selected_computer,
         'computer_assignments': computer_assignments,
-        'print_me': print_me
         }
     return render(request, 'Website/computers_detail.html', context)
-
 
 def training(request):
     ''' Gets all of the training programs from DB, sorts by most recent date,
