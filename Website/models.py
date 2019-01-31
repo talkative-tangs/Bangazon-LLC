@@ -63,8 +63,10 @@ class Join_Computer_Employee(models.Model):
     unassign_date = models.DateField('Unassign Date', default=None, blank=True, null=True)
 
 # Training Program Model
-class Training_Program(models.Model):
+class Training_Program(SafeDeleteModel):
     """A program the company offers employees"""
+    _safedelete_policy = SOFT_DELETE_CASCADE
+
     program_name = models.CharField(max_length=100)
     program_desc = models.CharField(max_length=200)
     start_date = models.DateField('Starting Date')
