@@ -105,16 +105,19 @@ source env/bin/activate
 Activate your vim and run `pip install -r requirements.txt`
 
 
-##Create Local Database
+# Installing Bangazon API
+
+As of now, the database is going to be hosted on your local computer. There are a few things you need to make sure are in place before the database can be up and running.
+
+Fork and clone the repo on to you local machine. 
 
 Run makemigrations
 `python manage.py makemigrations Website`
 Run migrate
 `python manage.py migrate`
-
+>This will create all the migrations needed for Django Framework to post items to the database based on the models in the Models/ directory
 Create initial SQL data. Nagivate to the Bangazon-LLC directory and run:
 `sqlite3 db.sqlite < data.sql`
-
 
 ## Run Server
 
