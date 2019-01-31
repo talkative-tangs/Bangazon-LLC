@@ -3,6 +3,7 @@ This is an API for Bangazon LLC. This API will allow user to GET/POST/PUT and (s
 
 ## Link to ERD
 
+![Bangazon-ERD](Website/images/Bangazon-ERD.png "Bangazon-ERD")
 
 # Core Technologies
 
