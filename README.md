@@ -70,10 +70,19 @@ The [DB browser for SQLite](http://sqlitebrowser.org/) will let you view, query 
 
 ## Python
 
+[Python Getting Started](https://www.python.org/about/gettingstarted/)
+
+[Download Python](https://www.python.org/downloads/)
+
+If you are using a Mac, see the [Python for Mac OS X](https://www.python.org/downloads/mac-osx/) page. MacOS 10.2 (Jaguar), 10.3 (Panther), 10.4 (Tiger) and 10.5 (Leopard) already include various versions of Python.
+
+If you're running Windows: the most stable Windows downloads are available from the [Python for Windows](https://www.python.org/downloads/windows/) page.
 
 ## Django Project / Django App
 
+[Django Install](https://docs.djangoproject.com/en/2.1/topics/install/)
 
+[Django for Windows](https://docs.djangoproject.com/en/2.1/howto/windows/)
 
 ## Setup Virtual Environment and Dependencies
 
