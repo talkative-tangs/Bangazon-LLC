@@ -80,6 +80,8 @@ If you're running Windows: the most stable Windows downloads are available from 
 
 ## Django Project / Django App
 
+Django is a Python Web framework. This project uses Django and requires Python to be installed. See above note on installing Python.
+
 [Django Install](https://docs.djangoproject.com/en/2.1/topics/install/)
 
 [Django for Windows](https://docs.djangoproject.com/en/2.1/howto/windows/)
