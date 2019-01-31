@@ -5,22 +5,23 @@
 <h1>Bangazon Employee: {{ employee.first_name }} {{employee.last_name }}</h1>
 <ul>
   <li>Department: {{ employee.department.department_name }}</li>
-  <!-- If computers have been assigned to an employee -->
+  <li>Current Computer: {{ employee.current_computer }}</li>
+  <!-- If computers have been assigned to an employee
   {% if computers %}
-  <!-- Slice the first instance that meets the following criteria. This acts as a break for the loop -->
+  Slice the first instance that meets the following criteria. This acts as a break for the loop
     {% for computer in computers|slice:":1" %}
-    <!-- If a computer exists in the table, and does not have an unassign_date, it is the current computer -->
+    If a computer exists in the table, and does not have an unassign_date, it is the current computer
     {% if computer.unassign_date == null %}
     <li>Current Computer: #{{ computer.computer_id }}</li>
-    <!-- Affordance for when an employee has had a computer previously, but no current assignment -->
+    Affordance for when an employee has had a computer previously, but no current assignment
     {% else %}
     <li>This employee has no assigned computer.</li>
     {% endif %}
     {% endfor %}
-    <!-- Affordance for employee that has never had a computer assignment -->
-  {% else %}
-  <li>This employee has no assigned computer.</li>
-  {% endif %}
+    Affordance for employee that has never had a computer assignment
+  {% else %} -->
+  <!-- <li>This employee has no assigned computer.</li>
+  {% endif %} -->
   {% if programs %}
   <li>All Training Programs:
     <ul>

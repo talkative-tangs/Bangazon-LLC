@@ -35,15 +35,25 @@ class Employee(models.Model):
     department = models.ForeignKey(Department, on_delete=models.PROTECT)
     is_supervisor = models.BooleanField(default=False)
 
+    @property
+    def current_computer(self):
+        if self.join_computer_employee_set.filter(unassign_date__isnull=True).exists() == True:
+            computer = self.join_computer_employee_set.filter(unassign_date__isnull=True).values_list('computer_id')
+            print(computer[0])
+            computer_number = ' '.join(map(str, computer[0]))
+            return f"#{computer_number}"
+        else:
+            return "No computer currently assigned."
+
     def __str__(self):
         return_value = (f"{self.first_name} {self.last_name} works in the {self.department} department")
         return return_value
 
 #Computer Model
 class Computer(SafeDeleteModel):
-    """A device that is assigned to a company employee"""  
+    """A device that is assigned to a company employee"""
     _safedelete_policy = SOFT_DELETE_CASCADE
-    
+
     purchase_date = models.DateField('Purchase Date')
     decommission_date = models.DateField('Decommission Date', default=None, blank=True, null=True)
     manufacturer = models.CharField(max_length=30)
