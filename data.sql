@@ -45,14 +45,14 @@ INSERT into Website_training_program VALUES (null, "Code of Conduct", "Two-day t
 
 
 -- Computer --
-INSERT INTO Website_computer VALUES (null, "2018-02-01", null, "Lenovo", "Yoga 710", 0);
-INSERT INTO Website_computer VALUES (null, "2018-01-01", null, "Apple", "15in MacBook Pro", 0);
-INSERT INTO Website_computer VALUES (null, "2017-11-20", null, "Apple", "13in MacBook Air", 0);
-INSERT INTO Website_computer VALUES (null, "2018-05-07", null, "Lenovo", "Thinkbook X1", 1);
-INSERT INTO Website_computer VALUES (null, "2019-01-02", null, "Apple", "15in MacBook Pro", 1);
-INSERT INTO Website_computer VALUES (null, "2019-01-03", null, "Apple", "15in MacBook Pro", 0);
-INSERT INTO Website_computer VALUES (null, "2018-01-02", "2019-02-01", "Asus", "Aspire", 0);
-INSERT INTO Website_computer VALUES (null, "2017-12-12", null, "Dell", "Inspiron", 1);
+INSERT INTO Website_computer VALUES (null, null, "2018-02-01", null, "Lenovo", "Yoga 710", 0);
+INSERT INTO Website_computer VALUES (null, null, "2018-01-01", null, "Apple", "15in MacBook Pro", 0);
+INSERT INTO Website_computer VALUES (null, null, "2017-11-20", null, "Apple", "13in MacBook Air", 0);
+INSERT INTO Website_computer VALUES (null, null, "2018-05-07", null, "Lenovo", "Thinkbook X1", 1);
+INSERT INTO Website_computer VALUES (null, null, "2019-01-02", null, "Apple", "15in MacBook Pro", 1);
+INSERT INTO Website_computer VALUES (null, null, "2019-01-03", null, "Apple", "15in MacBook Pro", 0);
+INSERT INTO Website_computer VALUES (null, null, "2018-01-02", "2019-02-01", "Asus", "Aspire", 0);
+INSERT INTO Website_computer VALUES (null, null, "2017-12-12", null, "Dell", "Inspiron", 1);
 -- End Computer --
 
 -- Join_Training_Employee --
