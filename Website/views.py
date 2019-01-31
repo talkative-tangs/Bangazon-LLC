@@ -35,6 +35,25 @@ def employees_add(request):
       new_employee.save()
     return HttpResponseRedirect(reverse('Website:employees'))
 
+def employees_edit(request, employee_id):
+    ''' Allows user to edit employee information:
+    last name, or change department / computer / training programs assigned
+    '''
+    if request.method != 'POST':
+      department_list = Department.objects.all()
+      employee = Employee.objects.get(id=employee_id)
+      context = { 'employee' : employee, 'department_list' : department_list }
+      return render(request, 'Website/employees_edit.html', context)
+    else:
+      employee = Employee.objects.get(id=employee_id)
+      employee.first_name = request.POST["first_name"]
+      employee.last_name = request.POST["last_name"]
+      employee.department_id = request.POST["department"]
+      employee.is_supervisor = request.POST["is_supervisor"]
+
+      employee.save()
+    return HttpResponseRedirect(reverse('Website:employees'))
+
 def departments(request):
     '''Lists all departments sorted by name'''
     department_list = Department.objects.all().order_by('department_name')
@@ -98,7 +117,7 @@ def computers_add(request):
 
 def computers_delete(request, computer_id):
     '''delete computer from computer list'''
-    
+
     if request.method != 'POST':
         selected_computer = Computer.objects.get(id=computer_id)
         computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer_id)
@@ -111,7 +130,7 @@ def computers_delete(request, computer_id):
         else:
             context = {
                'selected_computer': selected_computer,
-                'delete': False, 
+                'delete': False,
             }
         return render(request, 'Website/computers_delete.html', context)
     else:

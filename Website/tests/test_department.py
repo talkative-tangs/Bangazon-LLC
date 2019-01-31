@@ -7,8 +7,8 @@ from ..models import Department
 # Create your tests here.
 
 # Your test suite must verify that the content of the response has one,
-# or more, of the expected values. For example, 
-# if one of the departments in your database is "Sales", 
+# or more, of the expected values. For example,
+# if one of the departments in your database is "Sales",
 # then you must verify that it exists in the content.
 
 class DepartmentTest(TestCase):
@@ -52,14 +52,13 @@ class DepartmentTest(TestCase):
         self.assertIn(new_department.department_name.encode(), response.content)
         self.assertIn(new_department2.department_name.encode(), response.content)
         self.assertIn(new_department3.department_name.encode(), response.content)
-
-        #specific test department name ?? 
+        self.assertIn("Invisible Pants for Men that Enjoy Ferris Wheels".encode(), response.content)
 
     def test_post_department(self):
-        '''Your test suite must verify that when a POST operation is performed to the corresponding URL, 
+        '''Your test suite must verify that when a POST operation is performed to the corresponding URL,
         then a successful response is received (i.e. status code must be 200)'''
 
-        response = self.client.post(reverse('Website:departments_add'), 
+        response = self.client.post(reverse('Website:departments_add'),
             {
             'department_name': 'Organically Grown Pasta-made Blouses',
             'budget': 2
@@ -71,7 +70,7 @@ class DepartmentTest(TestCase):
         self.assertEqual(response.status_code, 302)
         # get a 200 when checking the list of computers and new computer exists
         self.assertEqual(get_response.status_code, 200)
-    
+
     def test_get_department_form(self):
         '''Your test suite must verify that the content of the response has the required input fields.'''
         response = self.client.get(reverse('Website:departments_add'))
@@ -79,7 +78,7 @@ class DepartmentTest(TestCase):
         self.assertIn(
             '<input type="text" name="department_name" required/>'.encode(), response.content
         )
-    
+
     def test_get_department_detail(self):
         new_department = Department.objects.create(
             department_name = "Corgi Fur Extractors",
