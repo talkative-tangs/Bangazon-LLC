@@ -11,6 +11,13 @@ class Department(models.Model):
     department_name = models.CharField(max_length=100)
     budget = models.IntegerField()
 
+    #getter method
+    #logic you want that has more to do with the model than the view
+    @property
+    def current_employees(self):
+        # print("self", self.budget)
+        return len(self.employee_set.filter(end_date__isnull=True))
+
     def __str__(self):
         return self.department_name
 
