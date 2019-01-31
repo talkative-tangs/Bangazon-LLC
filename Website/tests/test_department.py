@@ -53,9 +53,7 @@ class DepartmentTest(TestCase):
         self.assertIn(new_department2.department_name.encode(), response.content)
         self.assertIn(new_department3.department_name.encode(), response.content)
         self.assertIn("Invisible Pants for Men that Enjoy Ferris Wheels".encode(), response.content)
-
-        #specific test department name ?? 
-
+        
     def test_post_department(self):
         '''Your test suite must verify that when a POST operation is performed to the corresponding URL, 
         then a successful response is received (i.e. status code must be 200)'''
