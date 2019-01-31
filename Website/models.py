@@ -7,7 +7,7 @@ from django.db import models
 
 # Department Model
 class Department(models.Model):
-    """a grouping of employees"""    
+    """a grouping of employees"""
     department_name = models.CharField(max_length=100)
     budget = models.IntegerField()
 
@@ -19,11 +19,11 @@ class Department(models.Model):
         return len(self.employee_set.filter(end_date__isnull=True))
 
     def __str__(self):
-        return self.department_name    
+        return self.department_name
 
 # Employee Model
 class Employee(models.Model):
-    """a person that works for the company"""                        
+    """a person that works for the company"""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     start_date = models.DateField('Starting Date')
@@ -37,26 +37,27 @@ class Employee(models.Model):
 
 #Computer Model
 class Computer(models.Model):
-    """A device that is assigned to a company employee"""    
+    """A device that is assigned to a company employee"""
     purchase_date = models.DateField('Purchase Date')
     decommission_date = models.DateField('Decommission Date', default=None, blank=True, null=True)
     manufacturer = models.CharField(max_length=30)
     model = models.CharField(max_length=30)
     is_available = models.BooleanField(default=True)
+    employee = models.ManyToManyField(Employee, through='Join_Computer_Employee')
 
     def __str__(self):
-        computer_name = (f"{self.manufacturer} {self.model} - ID#{self.id}")        
-        return computer_name    
+        computer_name = (f"{self.manufacturer} {self.model} - ID#{self.id}")
+        return computer_name
 
 # Join table for Computer & Employee
 class Join_Computer_Employee(models.Model):
     """a relationship between computers and employees"""
-    employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
-    computer = models.ForeignKey(Computer, on_delete=models.PROTECT)
+    employee = models.ForeignKey('Employee', on_delete=models.PROTECT)
+    computer = models.ForeignKey('Computer', on_delete=models.PROTECT)
     assign_date = models.DateField('Assign Date')
     unassign_date = models.DateField('Unassign Date', default=None, blank=True, null=True)
 
-# Training Program Model                          
+# Training Program Model
 class Training_Program(models.Model):
     """A program the company offers employees"""
     program_name = models.CharField(max_length=100)
@@ -64,13 +65,14 @@ class Training_Program(models.Model):
     start_date = models.DateField('Starting Date')
     end_date = models.DateField('Ending Date')
     max_attendees =  models.IntegerField()
+    employee = models.ManyToManyField(Employee, through='Join_Training_Employee')
 
     def __str__(self):
         """returns a training program name"""
-        return self.program_name  
+        return self.program_name
 
 # Join table for Training Program & Employee
 class Join_Training_Employee(models.Model):
     """The join table for employees and training"""
-    employee = models.ForeignKey(Employee, on_delete=models.PROTECT)
-    training_program = models.ForeignKey(Training_Program, on_delete=models.PROTECT)                                                                                                                                                                                                
+    employee = models.ForeignKey('Employee', on_delete=models.PROTECT)
+    training_program = models.ForeignKey('Training_Program', on_delete=models.PROTECT)
