@@ -94,20 +94,26 @@ def computers_add(request):
 
 def computers_delete(request, computer_id):
     '''delete computer from computer list'''
-    selected_computer = Computer.objects.get(id=computer_id)
-    computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer_id)
+    
+    if request.method != 'POST':
+        selected_computer = Computer.objects.get(id=computer_id)
+        computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer_id)
 
-    if len(computer_assignments) == 0:
+        if len(computer_assignments) == 0:
+            context = {
+                'selected_computer': selected_computer,
+                'delete': True,
+            }
+        else:
+            context = {
+               'selected_computer': selected_computer,
+                'delete': False, 
+            }
+        return render(request, 'Website/computers_delete.html', context)
+    else:
+        selected_computer = Computer.objects.get(id=computer_id)
         selected_computer.delete()
         return HttpResponseRedirect(reverse('Website:computers'))
-    else:
-        return render(request,'Website/computers_delete.html')
-
-    context = {
-        'selected_computer': selected_computer,
-        'computer_assignments': computer_assignments,
-        }
-    return render(request, 'Website/computers_detail.html', context)
 
 def training(request):
     ''' Gets all of the training programs from DB, sorts by most recent date,

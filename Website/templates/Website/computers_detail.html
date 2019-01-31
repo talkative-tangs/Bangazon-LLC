@@ -13,7 +13,7 @@
         </ul>        
     </div>
 
-    <button onclick="return confirm('Are you sure you want to delete this computer?');">
+    <button>
         <a href="{% url 'Website:computers_delete' computer.id %}">Delete Computer</a>
     </button>
 
@@ -21,4 +21,6 @@
         <a href="{% url 'Website:computers' %}">Return to List of Computers</a>
     </button>
 {% endblock content %}
+
+<!-- onclick="return confirm('Are you sure you want to delete this computer?');" -->
 

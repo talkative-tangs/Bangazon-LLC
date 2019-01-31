@@ -1,13 +1,26 @@
 {% extends 'Website/base.html' %}
 
+
 {% block content %}
+    {% if delete %}
+        <h4>Are you sure you want to delete this computer?</h4>
+
+        <form action="{% url 'Website:computers_delete' selected_computer.id %}" method='POST'>
+            {% csrf_token %}
+            <button type='submit'>
+                Yes
+            </button>
+            <button>
+                <a href="{% url 'Website:computers' %}">Return to List of Computers</a>
+            </button>
+    {% else %}
+        <h4>Sorry, you can't delete a computer that has been assigned.</h4>
+
+        <button>
+            <a href="{% url 'Website:computers' %}">Return to List of Computers</a>
+        </button>
+    {% endif %}
 
 
-    <p>Sorry, you can't delete a computer that has been assigned.</p>
 
-    <button>
-        <a href="{% url 'Website:computers' %}">Return to List of Computers</a>
-    </button>
 {% endblock content %}
-
-

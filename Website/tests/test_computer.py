@@ -89,12 +89,12 @@ class ComputerTest(TestCase):
             'purchase_date': '2019-01-29',
             })
 
-        get_response = self.client.get(reverse('Website:computers_delete', args=(1,)))
+        get_response = self.client.post(reverse('Website:computers_delete', args=(1,)))
 
         # getting 302 back because we have a successful url and the view is redirecting
         self.assertEqual(response.status_code, 302)
         # check that computer is deleted
-        computer = Computer.objects.filter(pk=1)
+        computer = Computer.objects.filter(id=1)
         self.assertEqual(len(computer), 0)
         # return to list of computers
         final_get_response = self.client.get(reverse('Website:computers'))
