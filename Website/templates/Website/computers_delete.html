@@ -1,0 +1,13 @@
+{% extends 'Website/base.html' %}
+
+{% block content %}
+
+
+    <p>Sorry, you can't delete a computer that has been assigned.</p>
+
+    <button>
+        <a href="{% url 'Website:computers' %}">Return to List of Computers</a>
+    </button>
+{% endblock content %}
+
+

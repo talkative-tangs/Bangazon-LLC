@@ -10,9 +10,7 @@
             <li>Purchase Date: {{ computer.purchase_date }}</li>
             <li>Decomssion Date: {{ computer.decommision_date }}</li>
             <li>Is Computer Available?: {{ computer.is_available|yesno:"yes,no,maybe" }}</li>
-        </ul>
-
-        
+        </ul>        
     </div>
 
     <button onclick="return confirm('Are you sure you want to delete this computer?');">
