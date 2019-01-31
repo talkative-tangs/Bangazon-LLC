@@ -70,6 +70,8 @@ The [DB browser for SQLite](http://sqlitebrowser.org/) will let you view, query 
 
 ## Python
 
+This project uses Python and its web framework Django.
+
 [Python Getting Started](https://www.python.org/about/gettingstarted/)
 
 [Download Python](https://www.python.org/downloads/)
