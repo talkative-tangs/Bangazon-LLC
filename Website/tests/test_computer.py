@@ -79,7 +79,25 @@ class ComputerTest(TestCase):
 # Testing Criteria #3
 # =================================================
 
-# Your test suite must verify that when a DELETE operation is performed to the corresponding URL, then a successful response is received. Status code must be 200.
-# =================================================
+    def test_delete_computer(self):
+        '''Your test suite must verify that when a DELETE operation is performed to the corresponding URL, then a successful response is received. Status code must be 200'''
 
+        response = self.client.post(reverse('Website:computers_add'), 
+            {
+            'manufacturer': 'Apple',
+            'model': 'Macbook Pro',
+            'purchase_date': '2019-01-29',
+            })
+
+        get_response = self.client.get(reverse('Website:computers_delete', args=(1,)))
+
+        # getting 302 back because we have a successful url and the view is redirecting
+        self.assertEqual(response.status_code, 302)
+        # check that computer is deleted
+        computer = Computer.objects.filter(pk=1)
+        self.assertEqual(len(computer), 0)
+        # return to list of computers
+        final_get_response = self.client.get(reverse('Website:computers'))
+        # check the list for a final 200 response
+        self.assertEqual(final_get_response.status_code, 200)
 
