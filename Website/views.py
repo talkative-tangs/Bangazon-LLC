@@ -95,7 +95,7 @@ def computers_add(request):
 def computers_delete(request, computer_id):
     '''delete computer from computer list'''
     selected_computer = Computer.objects.get(id=computer_id)
-    computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer)
+    computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer_id)
     
 
     # if computer_assignments.assign_date == null:
@@ -103,6 +103,13 @@ def computers_delete(request, computer_id):
     #     return HttpResponseRedirect(reverse('Website:computers'))
     # else:
     #     return HttpResponse('You cannot delete a computer that has been assigned.')
+
+    if len(computer_assignments) == 0:
+        selected_computer.delete()
+        return HttpResponseRedirect(reverse('Website:computers'))
+    else:
+        return HttpResponse('You cannot delete a computer that has been assigned.')
+
 
     context = {
         'selected_computer': selected_computer,
