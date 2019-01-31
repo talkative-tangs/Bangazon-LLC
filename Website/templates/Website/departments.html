@@ -3,16 +3,22 @@
 {% block content %}
 <h1>Bangazon Departments</h1>
         {% for department in department_list %}
-                <h3>Department Name: {{ department.department_name }}</h3>
-                    <p>Budget: ${{ department.budget}} per quarter</p>
-                    <p>Number of Employees: {{ department.employee_set.all.count }}</p>
-                    <ul>
+                <h3>Department Name: <a href="{% url 'Website:departments_detail' department.id %}">{{ department.department_name }}</a></h3>
+                    <p>Budget: ${{ department.budget}}.00 per quarter</p>
+                    <p>Number of Employees: {{ department.current_employees }}</p>
+                    
+                        <!-- {% for employee in current_employees %}
+                            {% if employee.department_id == department.id %}
+                                <p>{{employee.first_name}}</p>
+                            {% endif %}
+                        {% endfor %} -->
+                    <!-- <ul>
                             {% for employee in department.employee_set.all %}
                                 <li>
                                     Employee: {{ employee.first_name }}
                                 </li>
                             {% endfor %}
-                    </ul>
+                    </ul> -->
         {% endfor %}
         <button>
             <a href="{% url 'Website:departments_add' %}">Add New Department</a>
