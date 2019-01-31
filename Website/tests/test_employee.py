@@ -46,3 +46,13 @@ class EmployeeTest(TestCase):
         # self.assertIn(new_employee.start_date.encode(), response.content)
         # self.assertIn(new_employee.end_date.encode(), response.content)
         # self.assertIn(new_employee.is_supervisor.encode(), response.content)
+
+    def test_employee_edit(self):
+        new_employee = Employee.objects.create(
+          first_name='Forrest',
+          last_name='Gump',
+          start_date='1978-03-17',
+          end_date='1979-02-25',
+          is_supervisor=0,
+          department_id=2
+        )
