@@ -33,26 +33,26 @@ INSERT into Website_department VALUES (null, "Food Services", 100000);
 -- End Department --
 
 -- Training_Program --
-INSERT into Website_training_program VALUES (null, "Newhire Orientation", "Onboard all company newhires. Basic day-to-day procedures and expectations will be covered. Orientation will be held in Conference Room 2 from 8am to 2pm.", "2019-01-25", "2019-01-25", 20);
-INSERT into Website_training_program VALUES (null, "OSHA Safety Training", "Occupational Safety training is required for all Bangazon Employees. This program meets daily at 9am for 30 minutes.", "2018-05-12", "2019-05-16", 50);
-INSERT into Website_training_program VALUES (null, "Effective Managing", "This program is for current and prospective managers to learn how to improve communication with subordinates. This program meets daily at 9am for 30 minutes.", "2019-02-12", "2019-02-16", 5);
-INSERT into Website_training_program VALUES (null, "Social Media Guidelines", "This program will outline Bangazon's rules regarding the information employees may not post on various social media platforms. Training viewable online through company intranet. 2hrs.", "2019-02-18", "2019-02-18", 100);
-INSERT into Website_training_program VALUES (null, "Admin Software Training", "Attendees will review how to use the online administration suite to manage Bangazon data. 3hrs.", "2018-08-15", "2018-09-01", 10);
-INSERT into Website_training_program VALUES (null, "Training Training", "Attendees will be trained on how to train newhires. Training consists of training the trainers. 2hrs.", "2019-04-01", "2019-04-01", 10);
-INSERT into Website_training_program VALUES (null, "Another Training Session", "Three-day training where attendees will be trained yet again. 1hr.", "2019-04-23", "2019-04-25", 50);
-INSERT into Website_training_program VALUES (null, "Code of Conduct", "Two-day training where attendees will be trained on appropriate work behavior. 2hr.", "2019-05-14", "2019-05-15", 100);
+INSERT into Website_training_program VALUES (null, null, "Newhire Orientation", "Onboard all company newhires. Basic day-to-day procedures and expectations will be covered. Orientation will be held in Conference Room 2 from 8am to 2pm.", "2019-01-25", "2019-01-25", 20);
+INSERT into Website_training_program VALUES (null, null,"OSHA Safety Training", "Occupational Safety training is required for all Bangazon Employees. This program meets daily at 9am for 30 minutes.", "2018-05-12", "2019-05-16", 50);
+INSERT into Website_training_program VALUES (null, null,"Effective Managing", "This program is for current and prospective managers to learn how to improve communication with subordinates. This program meets daily at 9am for 30 minutes.", "2019-02-12", "2019-02-16", 5);
+INSERT into Website_training_program VALUES (null, null,"Social Media Guidelines", "This program will outline Bangazon's rules regarding the information employees may not post on various social media platforms. Training viewable online through company intranet. 2hrs.", "2019-02-18", "2019-02-18", 100);
+INSERT into Website_training_program VALUES (null, null, "Admin Software Training", "Attendees will review how to use the online administration suite to manage Bangazon data. 3hrs.", "2018-08-15", "2018-09-01", 10);
+INSERT into Website_training_program VALUES (null, null,"Training Training", "Attendees will be trained on how to train newhires. Training consists of training the trainers. 2hrs.", "2019-04-01", "2019-04-01", 10);
+INSERT into Website_training_program VALUES (null, null, "Another Training Session", "Three-day training where attendees will be trained yet again. 1hr.", "2019-04-23", "2019-04-25", 50);
+INSERT into Website_training_program VALUES (null, null,"Code of Conduct", "Two-day training where attendees will be trained on appropriate work behavior. 2hr.", "2019-05-14", "2019-05-15", 100);
 -- End Training_Program --
 
 
 -- Computer --
-INSERT INTO Website_computer VALUES (null, "2018-02-01", null, "Lenovo", "Yoga 710", 0);
-INSERT INTO Website_computer VALUES (null, "2018-01-01", null, "Apple", "15in MacBook Pro", 0);
-INSERT INTO Website_computer VALUES (null, "2017-11-20", null, "Apple", "13in MacBook Air", 0);
-INSERT INTO Website_computer VALUES (null, "2018-05-07", null, "Lenovo", "Thinkbook X1", 1);
-INSERT INTO Website_computer VALUES (null, "2019-01-02", null, "Apple", "15in MacBook Pro", 1);
-INSERT INTO Website_computer VALUES (null, "2019-01-03", null, "Apple", "15in MacBook Pro", 0);
-INSERT INTO Website_computer VALUES (null, "2018-01-02", "2019-02-01", "Asus", "Aspire", 0);
-INSERT INTO Website_computer VALUES (null, "2017-12-12", null, "Dell", "Inspiron", 1);
+INSERT INTO Website_computer VALUES (null, null, "2018-02-01", null, "Lenovo", "Yoga 710", 0);
+INSERT INTO Website_computer VALUES (null, null, "2018-01-01", null, "Apple", "15in MacBook Pro", 0);
+INSERT INTO Website_computer VALUES (null, null, "2017-11-20", null, "Apple", "13in MacBook Air", 0);
+INSERT INTO Website_computer VALUES (null, null, "2018-05-07", null, "Lenovo", "Thinkbook X1", 1);
+INSERT INTO Website_computer VALUES (null, null, "2019-01-02", null, "Apple", "15in MacBook Pro", 1);
+INSERT INTO Website_computer VALUES (null, null, "2019-01-03", null, "Apple", "15in MacBook Pro", 0);
+INSERT INTO Website_computer VALUES (null, null, "2018-01-02", "2019-02-01", "Asus", "Aspire", 0);
+INSERT INTO Website_computer VALUES (null, null, "2017-12-12", null, "Dell", "Inspiron", 1);
 -- End Computer --
 
 -- Join_Training_Employee --
