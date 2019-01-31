@@ -52,7 +52,7 @@ class Join_Computer_Employee(models.Model):
     """a relationship between computers and employees"""
     employee = models.ForeignKey('Employee', on_delete=models.PROTECT)
     computer = models.ForeignKey('Computer', on_delete=models.PROTECT)
-    assign_date = models.DateField('Assign Date', default=None, blank=True, null=True)
+    assign_date = models.DateField('Assign Date')
     unassign_date = models.DateField('Unassign Date', default=None, blank=True, null=True)
 
 # Training Program Model
