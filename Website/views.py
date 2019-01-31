@@ -117,7 +117,7 @@ def computers_add(request):
 
 def computers_delete(request, computer_id):
     '''delete computer from computer list'''
-    
+
     if request.method != 'POST':
         selected_computer = Computer.objects.get(id=computer_id)
         computer_assignments = Join_Computer_Employee.objects.filter(computer_id=computer_id)
@@ -130,7 +130,7 @@ def computers_delete(request, computer_id):
         else:
             context = {
                'selected_computer': selected_computer,
-                'delete': False, 
+                'delete': False,
             }
         return render(request, 'Website/computers_delete.html', context)
     else:
