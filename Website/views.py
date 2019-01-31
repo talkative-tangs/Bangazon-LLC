@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from django.urls import reverse
-
+# from django.db.models import Q
 from datetime import datetime
 from .models import Training_Program, Department, Employee, Computer, Join_Computer_Employee, Join_Training_Employee
 
@@ -22,8 +22,8 @@ def employees_detail(request, employee_id):
     #Need to build out database examples for multiple training programs in oder to build logic to sort programs by previous and upcoming.
     programs = Join_Training_Employee.objects.filter(employee_id=employee_id)
     #Logic for computer currently finds singular relationship. Need to build database examples for multiple computers in order to build logic to find CURRENT
-    computer = Join_Computer_Employee.objects.get(employee_id=employee_id)
-    context = { 'employee': employee, 'programs': programs, 'computer': computer}
+    computers = Join_Computer_Employee.objects.filter(employee_id=employee_id)
+    context = { 'employee': employee, 'programs': programs, 'computers': computers}
     return render(request, 'Website/employees_detail.html', context)
 
 def employees_add(request):

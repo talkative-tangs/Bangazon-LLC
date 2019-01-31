@@ -5,14 +5,20 @@
 <h1>Bangazon Employee: {{ employee.first_name }} {{employee.last_name }}</h1>
 <ul>
   <li>Department: {{ employee.department.department_name }}</li>
+  {% for computer in computers %}
+  {% if computer.unassign_date == null %}
   <li>Current Computer: #{{ computer.computer_id }}</li>
+  {% else %}
+  <li>This employee has no assigned computer.</li>
+  {% endif %}
+  {% endfor %}
   {% if programs %}
   <li>All Training Programs:
     <ul>
-    {% for program in programs %}
-  <li>{{ program.training_program.program_name }}</li>
-  {% endfor %}
-  </ul>
+      {% for program in programs %}
+      <li>{{ program.training_program.program_name }}</li>
+      {% endfor %}
+    </ul>
   </li>
   {% else %}
   <li>This employee has no training programs.</li>
