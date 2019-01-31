@@ -38,10 +38,7 @@ def employees_add(request):
 def departments(request):
     '''Lists all departments sorted by name'''
     department_list = Department.objects.all().order_by('department_name')
-    # current_employees = Employee.objects.all().filter(end_date=None)
-    # print("current employees", current_employees)
     context = { 'department_list': department_list }
-    print("context <----", context)
     return render(request, 'Website/departments.html', context)
 
 def departments_detail(request, department_id):
