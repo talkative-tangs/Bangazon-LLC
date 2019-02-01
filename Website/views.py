@@ -21,8 +21,9 @@ def employees_detail(request, employee_id):
     employee = Employee.objects.get(id=employee_id)
     programs = Join_Training_Employee.objects.filter(employee_id=employee_id)
     # future_programs = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+    # if Join_Training_Employee.training_program_id = Training_Program.id
 
-    context = { 'employee': employee, 'programs': programs}
+    context = { 'employee': employee, 'programs': programs }
     return render(request, 'Website/employees_detail.html', context)
 
 def employees_add(request):
