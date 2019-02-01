@@ -90,6 +90,16 @@ Django is a Python Web framework. This project uses Django and requires Python t
 
 ## Setup Virtual Environment and Dependencies
 
+Enable a virtual environment at the level above your project.
+
+Use the following commands in your terminal:
+```
+virtualenv env
+source env/bin/activate
+```
+
+Activate your vim and run `pip install -r requirements.txt`
+
 This project uses the following dependencies:
 
 Django
@@ -124,32 +134,18 @@ from safedelete.models import HARD_DELETE_NOCASCADE
 
 # We create a new model, with the given policy : Objects will be hard-deleted, or soft deleted if other objects would have been deleted too.
 class Article(SafeDeleteModel):
-    _safedelete_policy = HARD_DELETE_NOCASCADE
+    _safedelete_policy = SOFT_DELETE_CASCADE
 
     name = models.CharField(max_length=100)
 
 class Order(SafeDeleteModel):
-    _safedelete_policy = HARD_DELETE_NOCASCADE
+    _safedelete_policy = SOFT_DELETE_CASCADE
 
     name = models.CharField(max_length=100)
     articles = models.ManyToManyField(Article)
 ```
 
 ---------------------------------------------------------
-
-
-
-
-Enable a virtual environment at the level above your project.
-
-Use the following commands in your terminal:
-```
-virtualenv env
-source env/bin/activate
-```
-
-Activate your vim and run `pip install -r requirements.txt`
-
 
 # Installing Bangazon API
 
