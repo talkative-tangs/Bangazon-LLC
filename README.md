@@ -94,9 +94,8 @@ source env/bin/activate
 
 Activate your vim and run `pip install -r requirements.txt`
 
-### This Project Uses The Following Dependencies
 
-## Django Project / Django App
+### Django Project / Django App
 
 Django is a Python Web framework. This project uses Django and requires Python to be installed. See above note on installing Python.
 
@@ -104,8 +103,7 @@ Django is a Python Web framework. This project uses Django and requires Python t
 
 [Django for Windows](https://docs.djangoproject.com/en/2.1/howto/windows/)
 
-## Django safedelete
----------------------------------------------------------
+### Django safedelete
 
 [Django safedelete](https://django-safedelete.readthedocs.io/en/latest/)
 
@@ -145,7 +143,6 @@ class Order(SafeDeleteModel):
     articles = models.ManyToManyField(Article)
 ```
 
----------------------------------------------------------
 
 # Installing Bangazon API
 
