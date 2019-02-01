@@ -44,7 +44,12 @@ def employees_edit(request, employee_id):
       computer_list = Computer.objects.filter(is_available=True)
       join_list = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True)
       employee = Employee.objects.get(id=employee_id)
-      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list }
+
+      training_attending = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+      # all_future_training = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+
+      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list, 'training_attending': training_attending }
+
       return render(request, 'Website/employees_edit.html', context)
     else:
       employee = Employee.objects.get(id=employee_id)
@@ -89,7 +94,6 @@ def employees_edit(request, employee_id):
       computer_to_update = Computer.objects.get(id=edited_computer_id)
       computer_to_update.is_available = False
       computer_to_update.save()
-
 
 
     return HttpResponseRedirect(reverse('Website:employees'))

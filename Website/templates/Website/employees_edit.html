@@ -54,6 +54,13 @@
             <option value=True id="is_supervisor" selected="selected">Yes</option>
           {% endif %}
         </select>
+
+
+        <h3>Training Programs</h3>
+        <h4>Programs Attending</h4>
+        {% for program in training_attending %}
+          <p>{{ program.program_name }} -  Start Date: {{ program.start_date }} </p>
+        {% endfor %}
         <br/>
         <input type="submit" value="OK">
     </form>
