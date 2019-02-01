@@ -100,9 +100,6 @@ source env/bin/activate
 
 Activate your vim and run `pip install -r requirements.txt`
 
-This project uses the following dependencies:
-
-Django
 
 Django safedelete (see below)
 ---------------------------------------------------------
@@ -111,15 +108,15 @@ Django safedelete (see below)
 
 You can choose what happens when you delete an object :
 
-it can be masked from your database (soft delete, the default behavior)
+    * it can be masked from your database (soft delete, the default behavior)
 
-it can be masked from your database and mask any dependent models. (cascading soft delete)
+    * it can be masked from your database and mask any dependent models. (cascading soft delete)
 
-it can be normally deleted (hard delete)
+    * it can be normally deleted (hard delete)
 
-it can be hard-deleted, but if its deletion would delete other objects, it will only be masked
+    * it can be hard-deleted, but if its deletion would delete other objects, it will only be masked
 
-it can be never deleted or masked from your database (no delete, use with caution)
+    * it can be never deleted or masked from your database (no delete, use with caution)
 
 **This project uses SOFT_DELETE_CASCADE**
 
@@ -128,7 +125,7 @@ example
 ```
 # imports
 from safedelete.models import SafeDeleteModel
-from safedelete.models import HARD_DELETE_NOCASCADE
+from safedelete.models import SOFT_DELETE_CASCADE
 
 # Models
 
