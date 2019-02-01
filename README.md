@@ -80,19 +80,8 @@ If you are using a Mac, see the [Python for Mac OS X](https://www.python.org/dow
 
 If you're running Windows: the most stable Windows downloads are available from the [Python for Windows](https://www.python.org/downloads/windows/) page.
 
-## Django Project / Django App
 
-Django is a Python Web framework. This project uses Django and requires Python to be installed. See above note on installing Python.
-
-[Django Install](https://docs.djangoproject.com/en/2.1/topics/install/)
-
-[Django for Windows](https://docs.djangoproject.com/en/2.1/howto/windows/)
-
-## Setup Virtual Environment and Dependencies
-
-This project uses the following dependencies:
-
-Django
+## Setup Virtual Environment 
 
 Enable a virtual environment at the level above your project.
 
@@ -101,8 +90,58 @@ Use the following commands in your terminal:
 virtualenv env
 source env/bin/activate
 ```
+## Dependencies
 
 Activate your vim and run `pip install -r requirements.txt`
+
+
+### Django Project / Django App
+
+Django is a Python Web framework. This project uses Django and requires Python to be installed. See above note on installing Python.
+
+[Django Install](https://docs.djangoproject.com/en/2.1/topics/install/)
+
+[Django for Windows](https://docs.djangoproject.com/en/2.1/howto/windows/)
+
+### Django safedelete
+
+[Django safedelete](https://django-safedelete.readthedocs.io/en/latest/)
+
+You can choose what happens when you delete an object :
+
+    * it can be masked from your database (soft delete, the default behavior)
+
+    * it can be masked from your database and mask any dependent models. (cascading soft delete)
+
+    * it can be normally deleted (hard delete)
+
+    * it can be hard-deleted, but if its deletion would delete other objects, it will only be masked
+
+    * it can be never deleted or masked from your database (no delete, use with caution)
+
+**This project uses SOFT_DELETE_CASCADE**
+
+example
+
+```
+# imports
+from safedelete.models import SafeDeleteModel
+from safedelete.models import SOFT_DELETE_CASCADE
+
+# Models
+
+# We create a new model, with the given policy : Objects will be hard-deleted, or soft deleted if other objects would have been deleted too.
+class Article(SafeDeleteModel):
+    _safedelete_policy = SOFT_DELETE_CASCADE
+
+    name = models.CharField(max_length=100)
+
+class Order(SafeDeleteModel):
+    _safedelete_policy = SOFT_DELETE_CASCADE
+
+    name = models.CharField(max_length=100)
+    articles = models.ManyToManyField(Article)
+```
 
 
 # Installing Bangazon API
