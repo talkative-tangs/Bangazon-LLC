@@ -66,15 +66,17 @@ def employees_edit(request, employee_id):
           computer_to_update.is_available = True
           computer_to_update.save()
 
+      # get the current computer-employee relationship from the join table
       relationship = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True)
-
+      # grab the first result (there should only be one record but you need to select it by index)
       old_computer = relationship[0]
+      # set the unassigned date to today's date
       old_computer.unassign_date = datetime.today()
       old_computer.save()
 
 
 
-      # creates new join table record with current employee and selected computer
+      # creates new join table record with current employee and newly-selected computer
       new_computer = Join_Computer_Employee(
         assign_date= datetime.today(),
         computer_id= request.POST["unassigned_computer"],
@@ -82,7 +84,7 @@ def employees_edit(request, employee_id):
       )
       new_computer.save()
 
-      # makes edited computer unavailable
+      # makes the newly-selected computer unavailable
       edited_computer_id = request.POST["unassigned_computer"]
       computer_to_update = Computer.objects.get(id=edited_computer_id)
       computer_to_update.is_available = False
