@@ -52,7 +52,12 @@ def employees_edit(request, employee_id):
       computer_list = Computer.objects.filter(is_available=True)
       join_list = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True)
       employee = Employee.objects.get(id=employee_id)
-      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list }
+
+      all_training = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+      join_employee_training = Join_Training_Employee.objects.filter(employee_id=employee_id)
+
+      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list, 'all_training': all_training, 'join_employee_training': join_employee_training }
+
       return render(request, 'Website/employees_edit.html', context)
     else:
       employee = Employee.objects.get(id=employee_id)
@@ -63,6 +68,24 @@ def employees_edit(request, employee_id):
 
       employee.save()
 
+
+    return HttpResponseRedirect(reverse('Website:employees_detail', args=(employee_id,)))
+
+def employees_edit_computer(request, employee_id):
+    ''' Allows user to edit employee information:
+    last name, or change department / computer / training programs assigned
+    '''
+    if request.method != 'POST':
+      department_list = Department.objects.all()
+      computer_list = Computer.objects.filter(is_available=True)
+      join_list = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True)
+      employee = Employee.objects.get(id=employee_id)
+
+
+      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list }
+
+      return render(request, 'Website/employees_edit_computer.html', context)
+    else:
       # makes current computer available again
       current_computer_relationship = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True).values()
 
