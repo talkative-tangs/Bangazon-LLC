@@ -41,8 +41,10 @@ def employees_edit(request, employee_id):
     '''
     if request.method != 'POST':
       department_list = Department.objects.all()
+      computer_list = Computer.objects.filter(is_available=True)
+      join_list = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True)
       employee = Employee.objects.get(id=employee_id)
-      context = { 'employee' : employee, 'department_list' : department_list }
+      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list }
       return render(request, 'Website/employees_edit.html', context)
     else:
       employee = Employee.objects.get(id=employee_id)
@@ -52,6 +54,42 @@ def employees_edit(request, employee_id):
       employee.is_supervisor = request.POST["is_supervisor"]
 
       employee.save()
+
+
+      # makes current computer available again
+      current_computer_relationship = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True).values()
+
+      for computer in current_computer_relationship:
+      # current_computer_to_update = Computer.objects.get(id=current_computer.computer_id)
+        if computer:
+          computer_to_update = Computer.objects.get(id=computer['computer_id'])
+          computer_to_update.is_available = True
+          computer_to_update.save()
+
+      relationship = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True)
+
+      old_computer = relationship[0]
+      old_computer.unassign_date = datetime.today()
+      old_computer.save()
+
+
+
+      # creates new join table record with current employee and selected computer
+      new_computer = Join_Computer_Employee(
+        assign_date= datetime.today(),
+        computer_id= request.POST["unassigned_computer"],
+        employee_id= employee_id
+      )
+      new_computer.save()
+
+      # makes edited computer unavailable
+      edited_computer_id = request.POST["unassigned_computer"]
+      computer_to_update = Computer.objects.get(id=edited_computer_id)
+      computer_to_update.is_available = False
+      computer_to_update.save()
+
+
+
     return HttpResponseRedirect(reverse('Website:employees'))
 
 def departments(request):
