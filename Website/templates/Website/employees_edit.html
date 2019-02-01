@@ -25,23 +25,6 @@
           {% endfor %}
         </select>
         <br/>
-        {% if join_list%}
-          {% for relationship in join_list %}
-            <p>Current Computer: {{relationship.computer.manufacturer}} {{relationship.computer.model}} </p>
-          {% endfor %}
-        {% else %}
-            <p>No currently assigned computer</p>
-        {% endif %}
-
-        <p>You can choose from the following available computers:</p>
-
-        <label for="unassigned_computer">Unassigned Computers:</label>
-        <select name="unassigned_computer">
-          {% for computer in computer_list %}
-              <option value="{{computer.id}}" id="{{computer.id}}">{{computer.manufacturer}} - {{computer.model}}</option>
-          {% endfor %}
-        </select>
-        <br/>
 
 
         <label for="is_supervisor">Is Supervisor:</label>
@@ -54,14 +37,40 @@
             <option value=True id="is_supervisor" selected="selected">Yes</option>
           {% endif %}
         </select>
+        <br/>
+
+        {% if join_list%}
+          {% for relationship in join_list %}
+            <p>Current Computer: {{relationship.computer.manufacturer}} {{relationship.computer.model}} </p>
+          {% endfor %}
+        {% else %}
+            <p>No currently assigned computer</p>
+        {% endif %}
+
+        <p>Would you like to Change the Computer?</p>
+
+        <p>You can choose from the following available computers:</p>
+
+        <label for="unassigned_computer">Unassigned Computers:</label>
+        <select name="unassigned_computer">
+          {% for computer in computer_list %}
+              <option value="{{computer.id}}" id="{{computer.id}}">{{computer.manufacturer}} - {{computer.model}}</option>
+          {% endfor %}
+        </select>
+        <br/>
 
 
         <h3>Training Programs</h3>
-        <h4>Programs Attending</h4>
-        {% for program in training_attending %}
+        <h4>All Future Programs</h4>
+        {% for program in all_training %}
           <p>{{ program.program_name }} -  Start Date: {{ program.start_date }} </p>
         {% endfor %}
         <br/>
+        {% for relationship in join_employee_training %}
+          {% if not relationship.training_program.has_ended %}
+        <p>ATTENDING: {{relationship.training_program.program_name}} </p>
+          {% endif %}
+        {% endfor %}
         <input type="submit" value="OK">
     </form>
 

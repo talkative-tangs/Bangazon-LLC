@@ -2,18 +2,28 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
 from django.urls import reverse
-
+# from django.db.models import Q
 from datetime import datetime
-from .models import Training_Program, Department, Employee, Computer, Join_Computer_Employee
+from .models import Training_Program, Department, Employee, Computer, Join_Computer_Employee, Join_Training_Employee
 
 # Create your views here.
 def index(request):
     return render(request, 'Website/index.html')
 
 def employees(request):
+    '''Lists all Bangazon employees in ascending alphabetical order'''
     employees = Employee.objects.order_by('last_name')
     context = {'employees': employees}
     return render(request, 'Website/employees.html', context)
+
+def employees_detail(request, employee_id):
+    '''Shows details of clicked employee'''
+    employee = Employee.objects.get(id=employee_id)
+    programs = Join_Training_Employee.objects.filter(employee_id=employee_id)
+    # future_programs = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+
+    context = { 'employee': employee, 'programs': programs}
+    return render(request, 'Website/employees_detail.html', context)
 
 def employees_add(request):
     ''' Directs user to the add employee form / or /
@@ -45,10 +55,10 @@ def employees_edit(request, employee_id):
       join_list = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True)
       employee = Employee.objects.get(id=employee_id)
 
-      training_attending = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
-      # all_future_training = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+      all_training = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+      join_employee_training = Join_Training_Employee.objects.filter(employee_id=employee_id)
 
-      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list, 'training_attending': training_attending }
+      context = { 'employee' : employee, 'department_list' : department_list, 'computer_list' : computer_list, 'join_list': join_list, 'all_training': all_training, 'join_employee_training': join_employee_training }
 
       return render(request, 'Website/employees_edit.html', context)
     else:
@@ -59,7 +69,6 @@ def employees_edit(request, employee_id):
       employee.is_supervisor = request.POST["is_supervisor"]
 
       employee.save()
-
 
       # makes current computer available again
       current_computer_relationship = Join_Computer_Employee.objects.filter(employee_id=employee_id, unassign_date__isnull=True).values()
@@ -80,7 +89,6 @@ def employees_edit(request, employee_id):
           old_computer.save()
 
 
-
       # creates new join table record with current employee and newly-selected computer
       new_computer = Join_Computer_Employee(
         assign_date= datetime.today(),
@@ -95,8 +103,7 @@ def employees_edit(request, employee_id):
       computer_to_update.is_available = False
       computer_to_update.save()
 
-
-    return HttpResponseRedirect(reverse('Website:employees'))
+    return HttpResponseRedirect(reverse('Website:employees_detail', args=(employee_id,)))
 
 def departments(request):
     '''Lists all departments sorted by name'''

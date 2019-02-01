@@ -1,7 +1,7 @@
 # Live coded (LiveShare) as team: Ousama, Bryan, Lesley, Elyse
 
 from django.db import models
-from datetime import datetime
+from datetime import datetime, date
 
 from safedelete.models import SafeDeleteModel
 from safedelete.models import SOFT_DELETE_CASCADE
@@ -35,8 +35,17 @@ class Employee(models.Model):
     department = models.ForeignKey(Department, on_delete=models.PROTECT)
     is_supervisor = models.BooleanField(default=False)
 
+    @property
+    def current_computer(self):
+        if self.join_computer_employee_set.filter(unassign_date__isnull=True).exists() == True:
+            computer = self.join_computer_employee_set.filter(unassign_date__isnull=True).values_list('computer_id')
+            computer_number = ' '.join(map(str, computer[0]))
+            return f"#{computer_number}"
+        else:
+            return "No computer currently assigned."
+
     def __str__(self):
-        return_value = (f"{self.first_name} {self.last_name} is a member of department {self.department}")
+        return_value = (f"{self.first_name} {self.last_name} works in the {self.department} department")
         return return_value
 
 #Computer Model
@@ -77,7 +86,7 @@ class Training_Program(SafeDeleteModel):
 
     @property
     def has_ended(self):
-        if datetime.today() > self.end_date:
+        if date.today() > self.end_date:
           return True
         else:
           return False
