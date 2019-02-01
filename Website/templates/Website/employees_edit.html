@@ -46,7 +46,7 @@
     {% if join_list%}
       {% for relationship in join_list %}
         <p>Current Computer: {{relationship.computer.manufacturer}} {{relationship.computer.model}} </p>
-        <p><a href="{% url 'Website:employees_edit_computer' employee.id %}">Click here to Change the Computer</a></p>
+        <button><a href="{% url 'Website:employees_edit_computer' employee.id %}">Click here to Change the Computer</a></button>
       {% endfor %}
     {% else %}
         <p>No currently assigned computer</p>
