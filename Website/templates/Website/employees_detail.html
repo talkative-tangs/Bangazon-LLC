@@ -8,7 +8,7 @@
   <li>Current Computer: {{ employee.current_computer }}</li>
 
   {% if programs %}
-  <li>Future Training Programs:
+  <li>Active and Future Training Programs:
     <ul>
   {% for program in programs %}
   {% if not program.training_program.has_ended  %}
