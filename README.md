@@ -94,6 +94,48 @@ This project uses the following dependencies:
 
 Django
 
+Django safedelete (see below)
+---------------------------------------------------------
+You can choose what happens when you delete an object :
+
+it can be masked from your database (soft delete, the default behavior)
+
+it can be masked from your database and mask any dependent models. (cascading soft delete)
+
+it can be normally deleted (hard delete)
+
+it can be hard-deleted, but if its deletion would delete other objects, it will only be masked
+
+it can be never deleted or masked from your database (no delete, use with caution)
+
+**This project uses SOFT_DELETE_CASCADE**
+
+example
+
+```
+# imports
+from safedelete.models import SafeDeleteModel
+from safedelete.models import HARD_DELETE_NOCASCADE
+
+# Models
+
+# We create a new model, with the given policy : Objects will be hard-deleted, or soft deleted if other objects would have been deleted too.
+class Article(SafeDeleteModel):
+    _safedelete_policy = HARD_DELETE_NOCASCADE
+
+    name = models.CharField(max_length=100)
+
+class Order(SafeDeleteModel):
+    _safedelete_policy = HARD_DELETE_NOCASCADE
+
+    name = models.CharField(max_length=100)
+    articles = models.ManyToManyField(Article)
+```
+
+
+
+
+
 Enable a virtual environment at the level above your project.
 
 Use the following commands in your terminal:
