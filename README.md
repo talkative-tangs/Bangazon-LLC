@@ -133,7 +133,7 @@ For now, all calls to the API will be made from `http://localhost:8000` as the d
 * GET one You can get the information on a single employee by runnning a Get call to `http://localhost:8000/website/employees/{employeeID}`
 >Note you need to have a employee unique ID number to get the correct information
 
-* PUT You can update the info on a specific employee by running a Put call to `http://localhost:8000/website/employees/{employeeID}`
+* PUT You can update the info on a specific employee by running a Put call to `http://localhost:8000/website/employees/edit/{employeeID}`
     * Running a Put requires that you submit the entire object.
     * Example: `{ "id": 1, "first_name": "Olive", "last_name": "Elayan", "is_supervisor": 1, "department_id": 1}`
 
