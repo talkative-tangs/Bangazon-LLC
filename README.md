@@ -179,7 +179,7 @@ For now, all calls to the API will be made from `http://localhost:8000` as the d
 
 This repo created by the Talkative Tangs of Cohort 28:
 
-[Bryan Nilsen](https://github.com/BryanNilsen): Training Programs Module
+[Bryan Nilsen](https://github.com/BryanNilsen): Training Programs Module - Team Lead
 
 [Lesley Boyd](https://github.com/laboyd001): Computers Module
 
