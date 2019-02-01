@@ -96,6 +96,9 @@ Django
 
 Django safedelete (see below)
 ---------------------------------------------------------
+
+[Django safedelete](https://django-safedelete.readthedocs.io/en/latest/)
+
 You can choose what happens when you delete an object :
 
 it can be masked from your database (soft delete, the default behavior)
@@ -132,6 +135,7 @@ class Order(SafeDeleteModel):
     articles = models.ManyToManyField(Article)
 ```
 
+---------------------------------------------------------
 
 
 
