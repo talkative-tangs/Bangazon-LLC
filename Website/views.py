@@ -19,10 +19,10 @@ def employees(request):
 def employees_detail(request, employee_id):
     '''Shows details of clicked employee'''
     employee = Employee.objects.get(id=employee_id)
-    #Need to build out database examples for multiple training programs in oder to build logic to sort programs by previous and upcoming.
     programs = Join_Training_Employee.objects.filter(employee_id=employee_id)
-    #Logic for computer currently finds singular relationship. Need to build database examples for multiple computers in order to build logic to find CURRENT
-    context = { 'employee': employee, 'programs': programs}
+    future_programs = Training_Program.objects.all().order_by('start_date').filter(start_date__gte=datetime.today())
+
+    context = { 'employee': employee, 'programs': programs, 'training_list': training_list}
     return render(request, 'Website/employees_detail.html', context)
 
 def employees_add(request):

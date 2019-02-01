@@ -39,7 +39,6 @@ class Employee(models.Model):
     def current_computer(self):
         if self.join_computer_employee_set.filter(unassign_date__isnull=True).exists() == True:
             computer = self.join_computer_employee_set.filter(unassign_date__isnull=True).values_list('computer_id')
-            print(computer[0])
             computer_number = ' '.join(map(str, computer[0]))
             return f"#{computer_number}"
         else:
