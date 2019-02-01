@@ -6,34 +6,33 @@
 <ul>
   <li>Department: {{ employee.department.department_name }}</li>
   <li>Current Computer: {{ employee.current_computer }}</li>
+
   {% if programs %}
   <li>Future Training Programs:
     <ul>
-      {% for program in programs %}
-      {% if not program.training_program.has_ended  %}
-        <li>{{program.training_program.program_name}}</li>
+  {% for program in programs %}
+  {% if not program.training_program.has_ended  %}
+          <li>{{program.training_program.program_name}}</li>
+
         {% endif %}
       {% endfor %}
     </ul>
   </li>
-  {% else %}
-  <li>This employee has no future training programs.</li>
   {% endif %}
-  </li>
+
   {% if programs %}
   <li>Previous Training Programs:
     <ul>
-      {% for program in programs %}
-      {% if program.training_program.has_ended  %}
-        <li>{{program.training_program.program_name}}</li>
-        {% endif %}
-      {% endfor %}
+  {% for program in programs %}
+  {% if program.training_program.has_ended  %}
+          <li>{{program.training_program.program_name}}</li>
+
+          {% endif %}
+        {% endfor %}
     </ul>
   </li>
-  {% else %}
-  <li>This employee has no past training programs.</li>
   {% endif %}
-  </li>
+
 </ul>
 
 <button>
