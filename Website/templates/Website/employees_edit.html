@@ -25,6 +25,25 @@
           {% endfor %}
         </select>
         <br/>
+        {% if join_list%}
+          {% for relationship in join_list %}
+            <p>Current Computer: {{relationship.computer.manufacturer}} {{relationship.computer.model}} </p>
+          {% endfor %}
+        {% else %}
+            <p>No currently assigned computer</p>
+        {% endif %}
+
+        <p>You can choose from the following available computers:</p>
+
+        <label for="unassigned_computer">Unassigned Computers:</label>
+        <select name="unassigned_computer">
+          {% for computer in computer_list %}
+              <option value="{{computer.id}}" id="{{computer.id}}">{{computer.manufacturer}} - {{computer.model}}</option>
+          {% endfor %}
+        </select>
+        <br/>
+
+
         <label for="is_supervisor">Is Supervisor:</label>
         <select name="is_supervisor">
           {% if employee.is_supervisor == 0 %}

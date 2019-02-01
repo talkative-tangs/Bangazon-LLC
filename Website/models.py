@@ -41,9 +41,9 @@ class Employee(models.Model):
 
 #Computer Model
 class Computer(SafeDeleteModel):
-    """A device that is assigned to a company employee"""  
+    """A device that is assigned to a company employee"""
     _safedelete_policy = SOFT_DELETE_CASCADE
-    
+
     purchase_date = models.DateField('Purchase Date')
     decommission_date = models.DateField('Decommission Date', default=None, blank=True, null=True)
     manufacturer = models.CharField(max_length=30)
