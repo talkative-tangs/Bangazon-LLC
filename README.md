@@ -80,15 +80,8 @@ If you are using a Mac, see the [Python for Mac OS X](https://www.python.org/dow
 
 If you're running Windows: the most stable Windows downloads are available from the [Python for Windows](https://www.python.org/downloads/windows/) page.
 
-## Django Project / Django App
 
-Django is a Python Web framework. This project uses Django and requires Python to be installed. See above note on installing Python.
-
-[Django Install](https://docs.djangoproject.com/en/2.1/topics/install/)
-
-[Django for Windows](https://docs.djangoproject.com/en/2.1/howto/windows/)
-
-## Setup Virtual Environment and Dependencies
+## Setup Virtual Environment 
 
 Enable a virtual environment at the level above your project.
 
@@ -97,11 +90,21 @@ Use the following commands in your terminal:
 virtualenv env
 source env/bin/activate
 ```
+## Dependencies
 
 Activate your vim and run `pip install -r requirements.txt`
 
+### This Project Uses The Following Dependencies
 
-Django safedelete (see below)
+## Django Project / Django App
+
+Django is a Python Web framework. This project uses Django and requires Python to be installed. See above note on installing Python.
+
+[Django Install](https://docs.djangoproject.com/en/2.1/topics/install/)
+
+[Django for Windows](https://docs.djangoproject.com/en/2.1/howto/windows/)
+
+## Django safedelete
 ---------------------------------------------------------
 
 [Django safedelete](https://django-safedelete.readthedocs.io/en/latest/)
